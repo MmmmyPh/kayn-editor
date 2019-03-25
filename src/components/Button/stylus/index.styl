@@ -1,0 +1,14 @@
+@import '~Stylus/variables'
+@import '~Stylus/mixins'
+
+.katze__btn
+	padding: 8px 16px
+	color: color-primary
+	background: transparent
+	border: 1px solid transparent
+	cursor: pointer
+	outline: 0
+	&:hover
+		shadowInset(0, 0, 20rem, rgba(0, 0, 0, .0625))
+	&--active
+		color: color-primary-active
