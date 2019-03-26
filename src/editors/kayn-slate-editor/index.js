@@ -18,7 +18,7 @@ const KaynEditor = ( {
 	const [ isReadOnly, setIsReadOnly ] = useState( readOnly );
 
 	return <KaynWrapper prefixCls = { prefixCls } className = { wrapperClassName }>
-		<KaynToolbar prefixCls = { prefixCls }>toolbar</KaynToolbar>
+		<KaynToolbar prefixCls = { prefixCls }></KaynToolbar>
 		<KaynContent 
 			prefixCls = { prefixCls }
 			value = { value }
