@@ -65,6 +65,7 @@ module.exports = {
 			utils: path.resolve( __dirname, '../src/utils' ),
 			plugins: path.resolve( __dirname, '../src/plugins' ),
 			components: path.resolve( __dirname, '../src/components' ),
+			constant: path.resolve( __dirname, '../src/constant' ),
 			stylus: path.resolve( __dirname, '../src/stylus' ),
 		},
 		extensions: [ '.webpack.js', '.web.js', '.js', '.ts', '.jsx', '.tsx', '.css', '.styl' ]
