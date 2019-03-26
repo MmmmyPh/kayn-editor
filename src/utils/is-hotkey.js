@@ -9,7 +9,7 @@ const IS_MAC = (
 
 const MODIFIERS = {
 	alt: 'altKey',
-	control: 'controlKey',
+	control: 'ctrlKey',
 	meta: 'metaKey',
 	shift: 'shiftKey'
 };
@@ -161,7 +161,6 @@ const compareHotkey = ( obj, event ) => {
 		}else {
 			actual = event[ key ];
 		}
-
 		if( actual === null && expected === false ) {
 			continue;
 		}

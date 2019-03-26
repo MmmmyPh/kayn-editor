@@ -1,0 +1,17 @@
+/**
+ * Map of all mark node types.
+ * @type {Map}
+ */
+module.exports = {
+	BOLD: 'BOLD',
+	ITALIC: 'ITALIC',
+	CODE: 'CODE',
+	STRIKETHROUGH: 'STRIKETHROUGH',
+	UNDERLINE: 'UNDERLINE',
+
+	// mark styles
+	FONTBGCOLOR: 'FONTBGCOLOR',
+	FONTCOLOR: 'FONTCOLOR',
+	FONTSIZE: 'FONTSIZE',
+	LETTERSPACING: 'LETTERSPACING'
+};
