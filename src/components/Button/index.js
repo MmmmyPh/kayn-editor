@@ -1,41 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import typeCheck from 'utils/type-check';
 
 import './stylus';
 
 const Button = ( {
-	id,
-	type, 
-	prefixCls,
+	prefixCls = 'kayn',
 	children,
 	onClick,
+	isActive,
 	className,
-	style,
 	...props
 } ) => (
 	<button
-		id = { id }
-		type = { type }
-		className = { classnames( `${ prefixCls }__btn`, className ) }
-		style = { style }
-		onMouseDown = { ( e ) => {
-			e.preventDefault();
-			typeCheck.isFunction( onClick ) && onClick( e );
-		} }
+		className = { classnames( `${ prefixCls }__btn`, { [ `${ prefixCls }__btn--active` ]: isActive }, className ) }
+		onClick = { onClick }
+		onMouseDown = { e => e.preventDefault() }
 		{ ...props }
 	>
 		{children}
 	</button>
 );
-
-Button.propTypes = {
-	prefixCls: PropTypes.string
-};
-
-Button.defaultProps = {
-	prefixCls: 'kayn'
-};
 
 export default Button;

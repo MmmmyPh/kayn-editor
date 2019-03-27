@@ -1,25 +1,23 @@
-import React from 'react';
+import React, { useContext, forwardRef } from 'react';
 import classnames from 'classnames';
 import { Editor } from 'slate-react';
-import KaynBoldPlugin from 'plugins/kayn-bold-plugin';
+import { KaynValueContext } from './kayn-context';
 
-const plugins = [
-	KaynBoldPlugin()
-];
-
-const KaynContent = ( { prefixCls, value, onChange } ) => {
+const KaynContent = forwardRef( ( { prefixCls, plugins }, ref ) => {
+	const { value, setValue } = useContext( KaynValueContext );
 	return (
 		<div
 			className = { classnames( `${ prefixCls }__content` ) }
 		>
 			<Editor
+				ref = { ref }
 				className = { classnames( `${ prefixCls }__core` ) }
 				plugins = { plugins }
 				value = { value }
-				onChange = { onChange }
+				onChange = { ( { value } ) => setValue( value ) }
 			/>
 		</div>
 	);
-};
+} ); 
 
 export default KaynContent;

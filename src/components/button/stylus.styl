@@ -2,13 +2,48 @@
 @import '~stylus/mixins'
 
 .kayn__btn
-	padding: 8px 16px
-	color: color-primary
+	poRel()
+	margin: 5px 0
+	padding: 0 8px
+	height: 36px
+	min-width: 36px
+	font-size: $font-size-base
+	color: $color-primary
 	background: transparent
-	border: 1px solid transparent
+	border(1px solid transparent)
 	cursor: pointer
 	outline: 0
+	&[data-title]:after, 
+	&[data-title]:before
+		poAbs()
+		z-index: 10
+		top: 100%
+		left: 50%
+		pointer-events: none
+		opacity: 0
+		transform: translateX(-50%) translateY(-5px)
+		transition: opacity .3s,transform .3s
+	&[data-title]:before
+		content: ''
+		margin-top: 3px
+		border(5px solid transparent)
+		border-bottom-color: #21242a
+	&[data-title]:after
+		margin-top: 12px
+		padding: 5px
+		background-color: #21242a
+		border-radius: 2px
+		box-shadow: 0 5px 15px rgba(0,0,0,.2)
+		color: #fff
+		font-size: 12px
+		line-height: 16px
+		white-space: nowrap
+		content: attr(data-title)
 	&:hover
 		shadowInset(0, 0, 20rem, rgba(0, 0, 0, .0625))
+		&&[data-title]:hover:after, 
+		&&[data-title]:hover:before
+			opacity: 1
+			transform: translateX(-50%) translateY(0)
 	&--active
-		color: color-primary-active
+		color: $color-primary-active
