@@ -24,6 +24,25 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.less$/,
+				use: [
+					'style-loader',
+					{ 
+						loader: 'css-loader',
+						options: {
+							importLoaders: 2
+						}
+					},
+					'postcss-loader',
+					{ 
+						loader: 'less-loader',
+						options: { 
+							javascriptEnabled: true 
+						}
+					},
+				]
+			},
+			{
 				test: /\.styl$/,
 				use: [
 					'style-loader',
