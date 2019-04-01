@@ -10,14 +10,18 @@ import initialEditorState from './initial-editor-state';
 // import plugins
 import KaynBoldPlugin from 'plugins/kayn-bold-plugin';
 import KaynItalicPlugin from 'plugins/kayn-italic-plugin';
+import KaynStrikethoughPlugin from 'plugins/kayn-strikethough-plugin';
+import KaynUnderlinePlugin from 'plugins/kayn-underline-plugin';
 import stylus from './stylus';
 
 const parseImmutable = value => Value.fromJSON( value );
 
-const defaultPluginsOptions = Set( [ 'bold', 'italic' ] );
+const defaultPluginsOptions = Set( [ 'bold', 'italic', 'underline', 'strikethough' ] );
 const pluginsMap = Map( {
 	bold: KaynBoldPlugin(),
 	italic: KaynItalicPlugin(),
+	underline: KaynUnderlinePlugin(),
+	strikethough: KaynStrikethoughPlugin(),
 } );
 
 const KaynEditor = ( { 
@@ -36,7 +40,10 @@ const KaynEditor = ( {
 	const editorRef = useRef( null );
 
 	useEffect( () => {
-		setRunningPlugins( prevRP => prevRP.filterNot( opt => Set( excludePlugins ).has( opt ) ) );
+		setRunningPlugins( prevRP => {
+			const next = prevRP.filterNot( opt => Set( excludePlugins ).has( opt ) );
+			return next;
+		} );
 		setPlugins( () => runningPlugins.map( use => pluginsMap.get( use ) ).toArray() );
 	}, excludePlugins );
 
