@@ -12,16 +12,21 @@ import KaynBoldPlugin from 'plugins/kayn-bold-plugin';
 import KaynItalicPlugin from 'plugins/kayn-italic-plugin';
 import KaynStrikethoughPlugin from 'plugins/kayn-strikethough-plugin';
 import KaynUnderlinePlugin from 'plugins/kayn-underline-plugin';
+import KaynSupPlugin from 'plugins/kayn-sup-plugin';
+import KaynSubPlugin from 'plugins/kayn-sub-plugin';
+// import stylus
 import stylus from './stylus';
 
 const parseImmutable = value => Value.fromJSON( value );
 
-const defaultPluginsOptions = Set( [ 'bold', 'italic', 'underline', 'strikethough' ] );
+const defaultPluginsOptions = Set( [ 'bold', 'italic', 'underline', 'strikethough', 'divider', 'sup', 'sub' ] );
 const pluginsMap = Map( {
 	bold: KaynBoldPlugin(),
 	italic: KaynItalicPlugin(),
 	underline: KaynUnderlinePlugin(),
 	strikethough: KaynStrikethoughPlugin(),
+	sup: KaynSupPlugin(),
+	sub: KaynSubPlugin(),
 } );
 
 const KaynEditor = ( { 
@@ -44,7 +49,7 @@ const KaynEditor = ( {
 			const next = prevRP.filterNot( opt => Set( excludePlugins ).has( opt ) );
 			return next;
 		} );
-		setPlugins( () => runningPlugins.map( use => pluginsMap.get( use ) ).toArray() );
+		setPlugins( () => runningPlugins.map( use => pluginsMap.get( use ) || {} ).toArray() );
 	}, excludePlugins );
 
 	return <KaynWrapper prefixCls = { prefixCls } className = { wrapperClassName }>

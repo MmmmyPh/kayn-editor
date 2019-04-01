@@ -9,6 +9,8 @@ const ICONS = {
 	FONTBGCOLOR: 'faPaintRoller',
 	FONTCOLOR: 'faPalette',
 	FONTSIZE: 'faFont',
+	SUP: 'faSuperscript',
+	SUB: 'faSubscript',
 	// LETTERSPACING: 'LETTERSPACING'
 };
 

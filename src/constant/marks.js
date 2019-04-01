@@ -8,6 +8,8 @@ module.exports = {
 	CODE: 'CODE',
 	STRIKETHROUGH: 'STRIKETHROUGH',
 	UNDERLINE: 'UNDERLINE',
+	SUP: 'SUP',
+	SUB: 'SUB',
 
 	// mark styles
 	FONTBGCOLOR: 'FONTBGCOLOR',

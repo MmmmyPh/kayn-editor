@@ -9,6 +9,8 @@ const TITLE = {
 	FONTBGCOLOR: '背景色',
 	FONTCOLOR: '字体颜色',
 	FONTSIZE: '字体大小',
+	SUP: '上标',
+	SUB: '下标',
 	// LETTERSPACING: 'LETTERSPACING'
 };
 
