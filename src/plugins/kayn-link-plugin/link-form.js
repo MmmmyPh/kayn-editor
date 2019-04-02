@@ -10,11 +10,13 @@ const buttonStyle = {
 	margin: '0 15px'
 };
 
-const LinkForm = ( { form: { getFieldDecorator }, needText, onConfirm } ) => {
+const LinkForm = ( { form: { getFieldDecorator }, visible, needText, onConfirm } ) => {
 	const urlRef = useRef();
 	useEffect( () => {
-		urlRef.current.focus();
-	}, [] );
+		if ( visible ) {
+			urlRef.current.focus();
+		}
+	}, [ visible ] );
 	return (
 		<Form layout = 'inline'>
 			<FormItem label = 'Url'>

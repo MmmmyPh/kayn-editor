@@ -9,24 +9,27 @@ export default ( editor, type, opt = defaultOpt ) => {
 	const haveLinks = haveInlines( editor, type );
 	if( haveLinks ) {
 		editor.unwrapInline( type );
-	}else if( editor.value.selection.isExpanded ) {
+	}else{
+		if ( editor.value.selection.isExpanded ) {
+			editor
+				.wrapInline( {
+					type,
+					data: { href }
+				} );
+		} else {
+			editor
+				.insertText( text )
+				.moveFocusBackward( text.length )
+				.wrapInline( {
+					type,
+					data: { href }
+				} );
+		}
 		editor
-			.wrapInline( {
-				type,
-				data: { href }
-			} )
-			.moveToEnd();
-	}else {
-		editor
-			.insertText( text )
-			.moveFocusBackward( text.length )
-			.wrapInline( {
-				type,
-				data: { href }
-			} )
 			.moveToEnd()
+			.insertText( '\u200B' )
 			.focus();
-	}
+	} 
 
 	return editor;
 };

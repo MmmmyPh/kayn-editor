@@ -87,6 +87,7 @@ export const KaynLinkButton = ( { editor, onChange, ...rest } ) => {
 		<Popover
 			visible = { visible }
 			content = { <LinkForm 
+				visible = { visible }
 				url = { url } 
 				text = { text } 
 				needText = { needText }

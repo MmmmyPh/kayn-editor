@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { Popover } from 'antd';
 import PopContent from './PopContent';
+import './stylus.styl';
 
-const aTextStyle = {
-	cursor: 'text'
-};
+const prefixCls = 'c-link';
 
 const LinkNode = ( { options, attributes, children, node, editor } ) => {
 	const [ editing, setEditing ] = useState( false );
-	console.log( '==========' );
-	console.log( node );
-	console.log( '==========' );
 
 	const handleToggleEditing = ( ed ) => setEditing( ed );
 
@@ -23,18 +19,18 @@ const LinkNode = ( { options, attributes, children, node, editor } ) => {
 	const href = options.getHref( node );
 
 	return <Popover
+		className = { prefixCls }
 		trigger = 'click'
 		placement = 'bottom'
 		onVisibleChange = { handleOnVisibleChange }
 		content = { <PopContent
 			href = { href }
-			node = { node }
 			editor = { editor }
 			editing = { editing }
 			toggleEditing = { handleToggleEditing }
 		/> }
 	>
-		<a { ...attributes } href = { href } target = '_blank' data-kayn-slate-type = 'link' style = { aTextStyle }>
+		<a { ...attributes } href = { href } target = '_blank' data-kayn-slate-type = 'link' className = { `${ prefixCls }__anchor--fake` }>
 			{children}
 		</a>
 	</Popover>;
