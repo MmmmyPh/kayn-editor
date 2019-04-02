@@ -11,6 +11,7 @@ const ICONS = {
 	FONTSIZE: 'faFont',
 	SUP: 'faSuperscript',
 	SUB: 'faSubscript',
+	LINK: 'faLink',
 	// LETTERSPACING: 'LETTERSPACING'
 };
 

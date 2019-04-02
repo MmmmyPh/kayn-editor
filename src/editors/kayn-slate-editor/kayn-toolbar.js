@@ -11,6 +11,7 @@ import { KaynStrikethoughButton } from 'plugins/kayn-strikethough-plugin';
 import { KaynUnderlineButton } from 'plugins/kayn-underline-plugin';
 import { KaynSupButton } from 'plugins/kayn-sup-plugin';
 import { KaynSubButton } from 'plugins/kayn-sub-plugin';
+import { KaynLinkButton } from 'plugins/kayn-link-plugin';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -22,15 +23,19 @@ const pluginBtnMap = Map( {
 	strikethough: KaynStrikethoughButton,
 	sup: KaynSupButton,
 	sub: KaynSubButton,
+	link: KaynLinkButton,
 } );
 
 const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProps } ) => {
 	const unRedo = [
 		<KaynUndoButton key = { 'undo' } editor = { editor } />,
 		<KaynRedoButton key = { 'redo' } editor = { editor } />,
-		<Divider key = { 'divider-0' } />
+		<Divider key = { 'divider--1' } />
 	];
 	const pluginsArr = unRedo.concat( runningPlugins.map( ( key, index ) => {
+		if ( /^divider/.test( key ) ) {
+			key = 'divider';
+		}
 		const Tag = pluginBtnMap.get( key );
 		return <Tag
 			key = { `${ key }-${ index }` }

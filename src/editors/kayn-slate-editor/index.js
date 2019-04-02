@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Set, Map } from 'immutable';
+import { OrderedSet, Map } from 'immutable';
 import { Value } from 'slate';
 import KaynWrapper from './kayn-wrapper';
 import KaynToolbar from './kayn-toolbar';
@@ -14,12 +14,17 @@ import KaynStrikethoughPlugin from 'plugins/kayn-strikethough-plugin';
 import KaynUnderlinePlugin from 'plugins/kayn-underline-plugin';
 import KaynSupPlugin from 'plugins/kayn-sup-plugin';
 import KaynSubPlugin from 'plugins/kayn-sub-plugin';
+import KaynLinkPlugin from 'plugins/kayn-link-plugin';
 // import stylus
 import stylus from './stylus';
 
 const parseImmutable = value => Value.fromJSON( value );
 
-const defaultPluginsOptions = Set( [ 'bold', 'italic', 'underline', 'strikethough', 'divider', 'sup', 'sub' ] );
+const defaultPluginsOptions = OrderedSet( [ 
+	'bold', 'italic', 'underline', 'strikethough', 'divider-0', 
+	'sup', 'sub', 'divider-1',
+	'link'
+] );
 const pluginsMap = Map( {
 	bold: KaynBoldPlugin(),
 	italic: KaynItalicPlugin(),
@@ -27,6 +32,7 @@ const pluginsMap = Map( {
 	strikethough: KaynStrikethoughPlugin(),
 	sup: KaynSupPlugin(),
 	sub: KaynSubPlugin(),
+	link: KaynLinkPlugin(),
 } );
 
 const KaynEditor = ( { 
@@ -45,10 +51,7 @@ const KaynEditor = ( {
 	const editorRef = useRef( null );
 
 	useEffect( () => {
-		setRunningPlugins( prevRP => {
-			const next = prevRP.filterNot( opt => Set( excludePlugins ).has( opt ) );
-			return next;
-		} );
+		setRunningPlugins( prevRP => prevRP.filterNot( opt => OrderedSet( excludePlugins ).has( opt ) ) );
 		setPlugins( () => runningPlugins.map( use => pluginsMap.get( use ) || {} ).toArray() );
 	}, excludePlugins );
 
