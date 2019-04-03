@@ -10,6 +10,7 @@ const TITLE = {
 	UNDERLINE: '下划线',
 	SUP: '上标',
 	SUB: '下标',
+	HEADING: '标题',
 	// color & font
 	FONTBGCOLOR: '背景色',
 	FONTCOLOR: '字体颜色',

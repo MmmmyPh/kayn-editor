@@ -16,7 +16,7 @@ import KaynSupPlugin from 'plugins/kayn-sup-plugin';
 import KaynSubPlugin from 'plugins/kayn-sub-plugin';
 import KaynLinkPlugin from 'plugins/kayn-link-plugin';
 // import stylus
-import stylus from './stylus';
+import './stylus';
 
 const parseImmutable = value => Value.fromJSON( value );
 

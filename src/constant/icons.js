@@ -12,6 +12,7 @@ const ICONS = {
 	SUP: 'faSuperscript',
 	SUB: 'faSubscript',
 	LINK: 'faLink',
+	HEADING: 'faHeading',
 	// LETTERSPACING: 'LETTERSPACING'
 };
 

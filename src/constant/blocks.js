@@ -14,6 +14,7 @@ module.exports = {
 	HTML: 'html_block',
 	HR: 'hr',
 	// Headings
+	HEADING: 'header',
 	HEADING_1: 'header_one',
 	HEADING_2: 'header_two',
 	HEADING_3: 'header_three',
