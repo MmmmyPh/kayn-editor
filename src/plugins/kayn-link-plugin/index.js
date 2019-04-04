@@ -100,7 +100,7 @@ export const KaynLinkButton = ( { editor, onChange, ...rest } ) => {
 		>
 			<Button
 				type = { LINK }
-				data-title = { TITLE[ LINK ] }
+				data-title = { TITLE[ LINK.toUpperCase() ] }
 				onClick = { handleClick }
 				isActive = { haveLinks }
 				{ ...rest }

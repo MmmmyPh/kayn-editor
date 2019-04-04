@@ -12,6 +12,7 @@ import { KaynUnderlineButton } from 'plugins/kayn-underline-plugin';
 import { KaynSupButton } from 'plugins/kayn-sup-plugin';
 import { KaynSubButton } from 'plugins/kayn-sub-plugin';
 import { KaynLinkButton } from 'plugins/kayn-link-plugin';
+import { KaynHeaderButton } from 'plugins/kayn-header-plugin';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -24,6 +25,7 @@ const pluginBtnMap = Map( {
 	sup: KaynSupButton,
 	sub: KaynSubButton,
 	link: KaynLinkButton,
+	header: KaynHeaderButton,
 } );
 
 const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProps } ) => {

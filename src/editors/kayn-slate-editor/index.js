@@ -23,6 +23,7 @@ const parseImmutable = value => Value.fromJSON( value );
 const defaultPluginsOptions = OrderedSet( [ 
 	'bold', 'italic', 'underline', 'strikethough', 'divider-0', 
 	'sup', 'sub', 'divider-1',
+	/* 'header', 'divider-2', */
 	'link'
 ] );
 const pluginsMap = Map( {
