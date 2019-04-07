@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { OrderedSet, Map } from 'immutable';
 import { Value } from 'slate';
+import typeCheck from 'utils/type-check';
 import KaynWrapper from './kayn-wrapper';
 import KaynToolbar from './kayn-toolbar';
 import KaynContent from './kayn-content';
@@ -15,6 +16,7 @@ import KaynUnderlinePlugin from 'plugins/kayn-underline-plugin';
 import KaynSupPlugin from 'plugins/kayn-sup-plugin';
 import KaynSubPlugin from 'plugins/kayn-sub-plugin';
 import KaynLinkPlugin from 'plugins/kayn-link-plugin';
+import HeaderPlugin from 'plugins/kayn-header-plugin';
 // import stylus
 import './stylus';
 
@@ -23,7 +25,7 @@ const parseImmutable = value => Value.fromJSON( value );
 const defaultPluginsOptions = OrderedSet( [ 
 	'bold', 'italic', 'underline', 'strikethough', 'divider-0', 
 	'sup', 'sub', 'divider-1',
-	/* 'header', 'divider-2', */
+	'header', 'divider-2',
 	'link'
 ] );
 const pluginsMap = Map( {
@@ -34,6 +36,7 @@ const pluginsMap = Map( {
 	sup: KaynSupPlugin(),
 	sub: KaynSubPlugin(),
 	link: KaynLinkPlugin(),
+	header: HeaderPlugin(),
 } );
 
 const KaynEditor = ( { 
@@ -53,7 +56,7 @@ const KaynEditor = ( {
 
 	useEffect( () => {
 		setRunningPlugins( prevRP => prevRP.filterNot( opt => OrderedSet( excludePlugins ).has( opt ) ) );
-		setPlugins( () => runningPlugins.map( use => pluginsMap.get( use ) || {} ).toArray() );
+		setPlugins( () => runningPlugins.map( use => pluginsMap.get( use ) || {} ).toArray().flat() );
 	}, excludePlugins );
 
 	return <KaynWrapper prefixCls = { prefixCls } className = { wrapperClassName }>

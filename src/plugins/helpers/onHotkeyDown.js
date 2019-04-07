@@ -1,4 +1,3 @@
-// import isHotkey from 'is-hotkey';
 import isHotkey from 'utils/is-hotkey';
 
 function onHotkeyDown( hotkey, isFn, notFn ) {

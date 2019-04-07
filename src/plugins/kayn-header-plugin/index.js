@@ -1,5 +1,9 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { Popover } from 'antd';
+import Button from 'components/button';
+import Icon from 'components/icon';
+import { haveBlocks } from 'utils/have';
+import TITLE from 'constant/button-title';
 import basicNodePlugin from 'plugins/kayn-basic-plugin/basicNodePlugin';
 import {
 	HEADING,
@@ -10,6 +14,26 @@ import {
 	HEADING_5,
 	HEADING_6,
 } from 'constant/blocks';
+import {
+	HeaderOne,
+	HeaderTwo,
+	HeaderThree,
+	HeaderFour,
+	HeaderFive,
+	HeaderSix,
+} from 'components/icon';
+import HeaderPop from './header-pop';
+
+const headerSvg = {
+	header_one: HeaderOne,
+	header_two: HeaderTwo,
+	header_three: HeaderThree,
+	header_four: HeaderFour,
+	header_five: HeaderFive,
+	header_six: HeaderSix,
+};
+
+const headingTypes = [ HEADING_1, HEADING_2, HEADING_3, HEADING_4, HEADING_5, HEADING_6 ];
 
 const plugin = ( type, tagName, hotkey, ...restOptions ) => basicNodePlugin( hotkey, { type, tagName, className: `kayn__${ type }`, ...restOptions } );
 
@@ -25,20 +49,62 @@ export const HeaderFivePlugin = ( type = HEADING_5, ...restOptions ) => plugin( 
 
 export const HeaderSixPlugin = ( type = HEADING_6, ...restOptions ) => plugin( type, 'h6', 'mod+opt+6', ...restOptions );
 
+const HeaderPlugin = ( options ) => {
+	return [
+		HeaderOnePlugin( options ),
+		HeaderTwoPlugin( options ),
+		HeaderThreePlugin( options ),
+		HeaderFourPlugin( options ),
+		HeaderFivePlugin( options ),
+		HeaderSixPlugin( options ),
+	];
+};
+
 export const KaynHeaderButton = ( { editor, onChange, ...rest } ) => {
+	const [ visible, setVisible ] = useState( false );
+
+	let haveHeader = false;
+	let HeaderIcon = () => <Icon icon = 'HEADING' />;
+	if( editor ) {
+		haveHeader = haveBlocks( editor, headingTypes );
+		const block = editor.value.blocks.get( 0 );
+		const blockType = block && block.type;
+		if ( headingTypes.findIndex( t => blockType === t ) !== -1 ) {
+			HeaderIcon = headerSvg[ blockType ];
+		}
+	}
+
+	const handleClick = () => {
+		setVisible( v => !v );
+	};
+
+	const handleVisibleChange = ( v ) => {
+		if( !v ) {
+			setVisible( false );
+		}
+	};
+
 	return (
 		<Popover
+			content = { <HeaderPop 
+				editor = { editor }
+				onClick = { handleVisibleChange }
+			/> }
+			visible = { visible }
 			trigger = 'click'
+			onVisibleChange = { handleVisibleChange }
 		>
 			<Button
 				type = { HEADING }
 				data-title = { TITLE[ HEADING ] }
-				// onClick={handleClick}
-				// isActive={haveLinks}
+				onClick = { handleClick }
+				isActive = { haveHeader }
 				{ ...rest }
 			>
-				<Icon icon = { HEADING.toUpperCase() } />
+				<HeaderIcon width = '18px' height = '18px' />
 			</Button>
 		</Popover>
 	);
 };
+
+export default HeaderPlugin;

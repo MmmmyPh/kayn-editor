@@ -1,3 +1,5 @@
+import typeCheck from 'utils/type-check';
+
 export const haveMarks = ( { value }, type ) => {
 	if( value.marks.size > 0 ) {
 		return value.marks.some( mark => mark.type === type );
@@ -7,8 +9,11 @@ export const haveMarks = ( { value }, type ) => {
 };
 
 export const haveBlocks = ( { value }, type ) => {
+	if ( !typeCheck.isArray( type ) ) {
+		type = [ type ];
+	}
 	if( value.blocks.size > 0 ) {
-		return value.blocks.some( block => block.type === type );
+		return value.blocks.some( block => type.findIndex( t => block.type === t ) !== -1 );
 	}
 
 	return false;

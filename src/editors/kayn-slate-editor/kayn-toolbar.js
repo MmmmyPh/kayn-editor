@@ -32,7 +32,7 @@ const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProp
 	const unRedo = [
 		<KaynUndoButton key = { 'undo' } editor = { editor } />,
 		<KaynRedoButton key = { 'redo' } editor = { editor } />,
-		<Divider key = { 'divider--1' } />
+		<Divider key = { 'divider--1' } />,
 	];
 	const pluginsArr = unRedo.concat( runningPlugins.map( ( key, index ) => {
 		if ( /^divider/.test( key ) ) {
