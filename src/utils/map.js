@@ -1,0 +1,1 @@
+export const mapValues = ( object, iterator ) => Object.entries( object ).reduce( ( acc, [ k, v ] ) => ( { ...acc, [ k ]: iterator( v ) } ), {} );
