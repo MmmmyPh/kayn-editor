@@ -9,9 +9,6 @@ const plugin = ( hotkey, align, type = 'align', ) => {
 		// },
 		onKeyDown: onHotkeyDown( hotkey, ( editor ) => {
 			applyAlignChange( editor, align, type );
-			console.log( '==========' );
-			console.log( editor.value.blocks.first() );
-			console.log( '==========' );
 		} )
 	};
 };
