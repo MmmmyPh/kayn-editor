@@ -1,10 +1,9 @@
 import React from 'react';
 import Icon from 'components/icon';
 import TITLE from 'constant/button-title';
-import applyBlockChange from 'plugins/helpers/applyBlockChange';
-import { haveBlocks } from 'utils/have';
+import { isActiveList, toggleList } from 'plugins/helpers/blockList';
 
-const basicNodeDecorator = ( type ) => ( Button ) => {
+const listButtonDecorator = ( type ) => ( Button ) => {
 	return class ToggleButtonDecoration extends React.Component {
 		render() {
 			const { editor, onChange, ...rest } = this.props;
@@ -12,15 +11,17 @@ const basicNodeDecorator = ( type ) => ( Button ) => {
 
 			const onClick = event => {
 				event.preventDefault();
-				applyBlockChange( editor, typeName );
+				toggleList( typeName, editor );
 			};
+
+			const isActive = isActiveList( editor, typeName );
 
 			return (
 				<Button
 					type = { typeName }
 					data-title = { TITLE[ typeName.toUpperCase() ] }
 					onClick = { onClick }
-					isActive = { editor ? haveBlocks( editor, typeName ) : false }
+					isActive = { isActive }
 					{ ...rest }
 				>
 					<Icon icon = { typeName.toUpperCase() } />
@@ -30,4 +31,4 @@ const basicNodeDecorator = ( type ) => ( Button ) => {
 	};
 };
 
-export default basicNodeDecorator;
+export default listButtonDecorator;

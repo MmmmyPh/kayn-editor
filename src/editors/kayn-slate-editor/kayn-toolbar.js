@@ -13,6 +13,9 @@ import { KaynSupButton } from 'plugins/kayn-sup-plugin';
 import { KaynSubButton } from 'plugins/kayn-sub-plugin';
 import { KaynLinkButton } from 'plugins/kayn-link-plugin';
 import { KaynHeaderButton } from 'plugins/kayn-header-plugin';
+import { KaynBlockquoteButton } from 'plugins/kayn-blockquote-plugin';
+import { KaynCodeButton } from 'plugins/kayn-code-plugin';
+import { KaynListButton } from 'plugins/kayn-list-plugin';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -24,9 +27,14 @@ const pluginBtnMap = Map( {
 	strikethough: KaynStrikethoughButton,
 	sup: KaynSupButton,
 	sub: KaynSubButton,
+	code: KaynCodeButton,
 	link: KaynLinkButton,
 	header: KaynHeaderButton,
+	blockquote: KaynBlockquoteButton,
+	list: KaynListButton
 } );
+
+const NullTag = () => <span></span>;
 
 const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProps } ) => {
 	const unRedo = [
@@ -38,7 +46,7 @@ const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProp
 		if ( /^divider/.test( key ) ) {
 			key = 'divider';
 		}
-		const Tag = pluginBtnMap.get( key );
+		const Tag = pluginBtnMap.get( key ) || NullTag;
 		return <Tag
 			key = { `${ key }-${ index }` }
 			editor = { editor }

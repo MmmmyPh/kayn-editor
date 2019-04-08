@@ -15,3 +15,38 @@
 		overflow-y: auto
 	&__core
 		height 100%
+	&__blockquote
+		border-left: 4px solid #ccc
+		margin-bottom: 5px
+		margin-top: 5px
+		padding-left: 16px
+	&__code
+		margin: 0
+		padding: 0.2em 0.4em
+		font-size: 85%
+		background-color: rgba(27,31,35,0.05)
+		border-radius: 3px
+	&__ol,
+	&__ul
+		display: block
+		margin-block-start: 1em
+		margin-block-end: 1em
+		margin-inline-start: 0px
+		margin-inline-end: 0px
+		padding-inline-start: 40px
+		& ul,
+		& ol
+			margin-block-start: 0px
+			margin-block-end: 0px
+	&__ol
+		list-style-type: decimal
+		& ol
+			list-style-type: lower-roman
+			& ol
+				list-style-type: lower-alpha
+	&__ul
+		list-style-type: disc
+		& ul
+			list-style-type: circle
+			& ul
+				list-style-type: square

@@ -13,6 +13,9 @@ const ICONS = {
 	SUB: 'faSubscript',
 	LINK: 'faLink',
 	HEADING: 'faHeading',
+	BLOCKQUOTE: 'faQuoteRight',
+	ORDERED_LIST: 'faListOl',
+	UNORDERED_LIST: 'faListUl',
 	// LETTERSPACING: 'LETTERSPACING'
 };
 

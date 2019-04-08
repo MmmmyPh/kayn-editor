@@ -26,3 +26,10 @@ export const haveInlines = ( { value }, type ) => {
 
 	return false;
 };
+
+export const haveEqualedDataKeyValueInSomeBlock = ( { value }, dataKey, dataValue ) => {
+	if( value.blocks.size > 0 ) {
+		return value.blocks.some( block => block.get( 'data' ).has( dataKey ) && block.get( 'data' ).get( dataKey ) === dataValue );
+	}
+	return false;
+};

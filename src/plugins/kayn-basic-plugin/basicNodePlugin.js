@@ -1,4 +1,3 @@
-import onHotkeyDown from 'plugins/helpers/onHotkeyDown';
 import basicNode from 'components/basicNode';
 import applyBlockChange from 'plugins/helpers/applyBlockChange';
 import isHotkey from 'utils/is-hotkey';

@@ -17,6 +17,10 @@ import KaynSupPlugin from 'plugins/kayn-sup-plugin';
 import KaynSubPlugin from 'plugins/kayn-sub-plugin';
 import KaynLinkPlugin from 'plugins/kayn-link-plugin';
 import HeaderPlugin from 'plugins/kayn-header-plugin';
+import KaynBlockquotePlugin from 'plugins/kayn-blockquote-plugin';
+import KaynCodePlugin from 'plugins/kayn-code-plugin';
+import KaynListPlugin from 'plugins/kayn-list-plugin';
+import KaynAlignPlugin from 'plugins/kayn-align-plugin';
 // import stylus
 import './stylus';
 
@@ -24,8 +28,9 @@ const parseImmutable = value => Value.fromJSON( value );
 
 const defaultPluginsOptions = OrderedSet( [ 
 	'bold', 'italic', 'underline', 'strikethough', 'divider-0', 
-	'sup', 'sub', 'divider-1',
-	'header', 'divider-2',
+	'header', 'blockquote', 'divider-1',
+	'list', 'align', 'divider-2',
+	'sup', 'sub', 'code', 'divider-3',
 	'link'
 ] );
 const pluginsMap = Map( {
@@ -35,8 +40,12 @@ const pluginsMap = Map( {
 	strikethough: KaynStrikethoughPlugin(),
 	sup: KaynSupPlugin(),
 	sub: KaynSubPlugin(),
+	code: KaynCodePlugin(),
 	link: KaynLinkPlugin(),
 	header: HeaderPlugin(),
+	blockquote: KaynBlockquotePlugin(),
+	list: KaynListPlugin(),
+	align: KaynAlignPlugin(),
 } );
 
 const KaynEditor = ( { 

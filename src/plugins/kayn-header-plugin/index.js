@@ -96,7 +96,7 @@ export const KaynHeaderButton = ( { editor, onChange, ...rest } ) => {
 		>
 			<Button
 				type = { HEADING }
-				data-title = { TITLE[ HEADING ] }
+				data-title = { TITLE[ HEADING.toUpperCase() ] }
 				onClick = { handleClick }
 				isActive = { haveHeader }
 				{ ...rest }
