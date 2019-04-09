@@ -20,6 +20,12 @@ const TITLE = {
 	FONTCOLOR: '字体颜色',
 	FONTSIZE: '字体大小',
 	FRONTFAMILIA: '字体',
+	// aligns
+	ALIGN_LEFT: '左对齐',
+	ALIGN_CENTER: '居中',
+	ALIGN_RIGHT: '右对齐',
+	INDENT: '缩进',
+	OUTDENT: '减少缩进',
 	// annex
 	LINK: '链接',
 	IMAGE: '图片',

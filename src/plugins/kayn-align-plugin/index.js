@@ -1,23 +1,23 @@
 import React from 'react';
 import onHotkeyDown from 'plugins/helpers/onHotkeyDown';
 import { applyAlignChange } from './align-decorator';
+import AlignLeftButton from './align-left';
+import AlignCenterButton from './align-center';
+import AlignRightButton from './align-right';
 
 const plugin = ( hotkey, align, type = 'align', ) => {
 	return {
-		// renderNode: () => {
-
-		// },
 		onKeyDown: onHotkeyDown( hotkey, ( editor ) => {
 			applyAlignChange( editor, align, type );
 		} )
 	};
 };
 
-export const AlignCenterPlugin = type => plugin( 'mod+opt+c', 'center', type );
+const AlignCenterPlugin = type => plugin( 'mod+opt+c', 'center', type );
 
-export const AlignLeftPlugin = type => plugin( 'mod+opt+l', 'left', type );
+const AlignLeftPlugin = type => plugin( 'mod+opt+l', 'left', type );
 
-export const AlignRightPlugin = type => plugin( 'mod+opt+r', 'right', type );
+const AlignRightPlugin = type => plugin( 'mod+opt+r', 'right', type );
 
 const KaynAlignPlugin = ( options ) => {
 	return [
@@ -27,4 +27,14 @@ const KaynAlignPlugin = ( options ) => {
 	];
 };
 
+const KaynAlignButton = ( props ) => (
+	<>
+		<AlignLeftButton key = 'align-left'{ ...props } />
+		<AlignCenterButton key = 'align-center'{ ...props } />
+		<AlignRightButton key = 'align-right'{ ...props } />
+	</>
+);
+
 export default KaynAlignPlugin;
+
+export { KaynAlignButton };

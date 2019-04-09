@@ -9,6 +9,7 @@ import KaynContent from './kayn-content';
 import { KaynValueContext } from './kayn-context';
 import initialEditorState from './initial-editor-state';
 // import plugins
+import KaynParagraphPlugin from 'plugins/kayn-paragraph-plugin';
 import KaynBoldPlugin from 'plugins/kayn-bold-plugin';
 import KaynItalicPlugin from 'plugins/kayn-italic-plugin';
 import KaynStrikethoughPlugin from 'plugins/kayn-strikethough-plugin';
@@ -28,12 +29,13 @@ const parseImmutable = value => Value.fromJSON( value );
 
 const defaultPluginsOptions = OrderedSet( [ 
 	'bold', 'italic', 'underline', 'strikethough', 'divider-0', 
-	'header', 'blockquote', 'divider-1',
-	'list', 'align', 'divider-2',
+	'header', 'blockquote', 'list', 'divider-1',
+	'align', 'divider-2',
 	'sup', 'sub', 'code', 'divider-3',
-	'link'
+	'link', 'paragraph'
 ] );
 const pluginsMap = Map( {
+	paragraph: KaynParagraphPlugin(),
 	bold: KaynBoldPlugin(),
 	italic: KaynItalicPlugin(),
 	underline: KaynUnderlinePlugin(),

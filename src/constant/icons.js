@@ -16,6 +16,11 @@ const ICONS = {
 	BLOCKQUOTE: 'faQuoteRight',
 	ORDERED_LIST: 'faListOl',
 	UNORDERED_LIST: 'faListUl',
+	ALIGN_LEFT: 'faAlignLeft',
+	ALIGN_CENTER: 'faAlignCenter',
+	ALIGN_RIGHT: 'faAlignRight',
+	INDENT: 'faIndent',
+	OUTDENT: 'faOutdent',
 	// LETTERSPACING: 'LETTERSPACING'
 };
 

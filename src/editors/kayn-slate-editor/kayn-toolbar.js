@@ -16,6 +16,7 @@ import { KaynHeaderButton } from 'plugins/kayn-header-plugin';
 import { KaynBlockquoteButton } from 'plugins/kayn-blockquote-plugin';
 import { KaynCodeButton } from 'plugins/kayn-code-plugin';
 import { KaynListButton } from 'plugins/kayn-list-plugin';
+import { KaynAlignButton } from 'plugins/kayn-align-plugin';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -31,10 +32,11 @@ const pluginBtnMap = Map( {
 	link: KaynLinkButton,
 	header: KaynHeaderButton,
 	blockquote: KaynBlockquoteButton,
-	list: KaynListButton
+	list: KaynListButton,
+	align: KaynAlignButton,
 } );
 
-const NullTag = () => <span></span>;
+const NullTag = () => null;
 
 const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProps } ) => {
 	const unRedo = [
