@@ -17,6 +17,7 @@ import { KaynBlockquoteButton } from 'plugins/kayn-blockquote-plugin';
 import { KaynCodeButton } from 'plugins/kayn-code-plugin';
 import { KaynListButton } from 'plugins/kayn-list-plugin';
 import { KaynAlignButton } from 'plugins/kayn-align-plugin';
+import { KaynIndentButton } from 'plugins/kayn-indent-plugin';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -34,6 +35,7 @@ const pluginBtnMap = Map( {
 	blockquote: KaynBlockquoteButton,
 	list: KaynListButton,
 	align: KaynAlignButton,
+	indent: KaynIndentButton,
 } );
 
 const NullTag = () => null;
