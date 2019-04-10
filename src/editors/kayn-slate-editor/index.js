@@ -22,16 +22,19 @@ import KaynBlockquotePlugin from 'plugins/kayn-blockquote-plugin';
 import KaynCodePlugin from 'plugins/kayn-code-plugin';
 import KaynListPlugin from 'plugins/kayn-list-plugin';
 import KaynAlignPlugin from 'plugins/kayn-align-plugin';
+import KaynFontColorPlugin from 'plugins/kayn-font-color-plugin';
+import KaynFontBgColorPlugin from 'plugins/kayn-font-bg-color-plugin';
 // import stylus
 import './stylus';
 
 const parseImmutable = value => Value.fromJSON( value );
 
 const defaultPluginsOptions = OrderedSet( [ 
-	'bold', 'italic', 'underline', 'strikethough', 'divider-0', 
-	'header', 'blockquote', 'list', 'divider-1',
-	'align', 'indent', 'divider-2',
-	'sup', 'sub', 'code', 'divider-3',
+	'color', 'fontBgColor', 'divider-0',
+	'bold', 'italic', 'underline', 'strikethough', 'divider-1', 
+	'header', 'blockquote', 'list', 'divider-2',
+	'align', 'indent', 'divider-3',
+	'sup', 'sub', 'code', 'divider-4',
 	'link', 'paragraph'
 ] );
 const pluginsMap = Map( {
@@ -48,6 +51,8 @@ const pluginsMap = Map( {
 	blockquote: KaynBlockquotePlugin(),
 	list: KaynListPlugin(),
 	align: KaynAlignPlugin(),
+	color: KaynFontColorPlugin(),
+	fontBgColor: KaynFontBgColorPlugin()
 } );
 
 const KaynEditor = ( { 

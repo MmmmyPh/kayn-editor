@@ -1,6 +1,13 @@
-export default () => (
-	<svg viewBox = '0 0 18 18'>
-		<g>
+import React from 'react';
+
+export default ( { height, width, fsColor = 'rgba(255, 255, 255, 1)' } ) => (
+	<svg className = 'kayn__svg' width = { width } height = { height } viewBox = '0 0 18 18'>
+		<g
+			style = { { 
+				// backgroundColor: fsColor === 'rgba(255, 255, 255, 1)' ? 'transparent' : fsColor,
+				fill: fsColor === 'rgba(255, 255, 255, 1)' ? 'rgba(0, 0, 0, 0.5)' : fsColor,
+			} }
+		>
 			<polygon points = '6 6.868 6 6 5 6 5 7 5.942 7 6 6.868' />
 			<rect height = '1' width = '1' x = '4' y = '4' />
 			<polygon points = '6.817 5 6 5 6 6 6.38 6 6.817 5' />
@@ -48,8 +55,18 @@ export default () => (
 			<rect height = '1' width = '1' x = '14' y = '15' />
 			<rect height = '1' width = '1' x = '15' y = '11' />
 		</g>
-		<polyline points = '5.5 13 9 5 12.5 13' />
+		<polyline  
+			style = { {
+				stroke:'rgba(0, 0, 0, 0.65)',
+				fill: 'transparent',
+				strokeLinecap: 'round',
+				strokeLinejoin: 'round',
+				strokeWidth: 1,
+			} }
+			points = '5.5 13 9 5 12.5 13' 
+		/>
 		<line
+			style = { { stroke: 'rgba(0, 0, 0, 0.65)' } }
 			x1 = '11.63'
 			x2 = '6.38'
 			y1 = '11'

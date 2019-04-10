@@ -3,8 +3,8 @@ import { mapValues } from 'utils/map';
 import { FONTSIZE, LETTERSPACING } from 'constant/marks';
 
 export const markStyleAttrs = {
-	backgroundColor: mark => mark.data.getIn( [ 'color', 'color' ] ),
-	color: mark => mark.data.getIn( [ 'color', 'color' ] ),
+	backgroundColor: mark => mark.data.getIn( [ 'bgColor'/* , 'color' */ ] ),
+	color: mark => mark.data.getIn( [ 'color'/* , 'color' */ ] ),
 	fontSize: mark => mark.data.get( FONTSIZE ),
 	letterSpacing: mark => mark.data.get( LETTERSPACING )
 };

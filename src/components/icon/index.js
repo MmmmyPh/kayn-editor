@@ -9,6 +9,8 @@ import HeaderThree from './svgs/header-three';
 import HeaderFour from './svgs/header-four';
 import HeaderFive from './svgs/header-five';
 import HeaderSix from './svgs/header-six';
+import Color from './svgs/color';
+import Background from './svgs/background';
 
 const Icon = ( { icon } ) => <FontAwesomeIcon icon = { faIcons[ ICONS[ icon ] ] } />;
 
@@ -21,4 +23,6 @@ export {
 	HeaderFour,
 	HeaderFive,
 	HeaderSix,
+	Color,
+	Background,
 };

@@ -74,15 +74,7 @@ export const KaynHeaderButton = ( { editor, onChange, ...rest } ) => {
 		}
 	}
 
-	const handleClick = () => {
-		setVisible( v => !v );
-	};
-
-	const handleVisibleChange = ( v ) => {
-		if( !v ) {
-			setVisible( false );
-		}
-	};
+	const handleVisibleChange = ( v ) => setVisible( v );
 
 	return (
 		<Popover
@@ -97,7 +89,6 @@ export const KaynHeaderButton = ( { editor, onChange, ...rest } ) => {
 			<Button
 				type = { HEADING }
 				data-title = { TITLE[ HEADING.toUpperCase() ] }
-				onClick = { handleClick }
 				isActive = { haveHeader }
 				{ ...rest }
 			>

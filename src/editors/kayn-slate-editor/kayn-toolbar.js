@@ -18,6 +18,8 @@ import { KaynCodeButton } from 'plugins/kayn-code-plugin';
 import { KaynListButton } from 'plugins/kayn-list-plugin';
 import { KaynAlignButton } from 'plugins/kayn-align-plugin';
 import { KaynIndentButton } from 'plugins/kayn-indent-plugin';
+import { KaynFontColorButton } from 'plugins/kayn-font-color-plugin';
+import { KaynFontBgColorButton } from 'plugins/kayn-font-bg-color-plugin';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -36,14 +38,16 @@ const pluginBtnMap = Map( {
 	list: KaynListButton,
 	align: KaynAlignButton,
 	indent: KaynIndentButton,
+	color: KaynFontColorButton,
+	fontBgColor: KaynFontBgColorButton,
 } );
 
 const NullTag = () => null;
 
 const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProps } ) => {
 	const unRedo = [
-		<KaynUndoButton key = { 'undo' } editor = { editor } />,
-		<KaynRedoButton key = { 'redo' } editor = { editor } />,
+		<KaynUndoButton key = 'undo' editor = { editor } />,
+		<KaynRedoButton key = 'redo' editor = { editor } />,
 		<Divider key = { 'divider--1' } />,
 	];
 	const pluginsArr = unRedo.concat( runningPlugins.map( ( key, index ) => {
