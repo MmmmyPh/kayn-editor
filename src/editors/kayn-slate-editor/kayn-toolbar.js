@@ -20,6 +20,7 @@ import { KaynAlignButton } from 'plugins/kayn-align-plugin';
 import { KaynIndentButton } from 'plugins/kayn-indent-plugin';
 import { KaynFontColorButton } from 'plugins/kayn-font-color-plugin';
 import { KaynFontBgColorButton } from 'plugins/kayn-font-bg-color-plugin';
+import { KaynTableButton } from 'plugins/kayn-table-plugin';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -40,6 +41,7 @@ const pluginBtnMap = Map( {
 	indent: KaynIndentButton,
 	color: KaynFontColorButton,
 	fontBgColor: KaynFontBgColorButton,
+	table: KaynTableButton,
 } );
 
 const NullTag = () => null;

@@ -27,10 +27,11 @@ const TITLE = {
 	INDENT: '缩进',
 	OUTDENT: '减少缩进',
 	// annex
-	LINK: '链接',
-	IMAGE: '图片',
-	VIDEO: '视频',
-	FORMULA: '公式',
+	LINK: '插入链接',
+	IMAGE: '插入图片',
+	VIDEO: '插入视频',
+	FORMULA: '插入公式',
+	TABLE: '插入表格',
 
 	// LETTERSPACING: 'LETTERSPACING'
 };

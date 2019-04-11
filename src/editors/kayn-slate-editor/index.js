@@ -24,6 +24,7 @@ import KaynListPlugin from 'plugins/kayn-list-plugin';
 import KaynAlignPlugin from 'plugins/kayn-align-plugin';
 import KaynFontColorPlugin from 'plugins/kayn-font-color-plugin';
 import KaynFontBgColorPlugin from 'plugins/kayn-font-bg-color-plugin';
+import KaynTablePlugin from 'plugins/kayn-table-plugin'
 // import stylus
 import './stylus';
 
@@ -35,7 +36,7 @@ const defaultPluginsOptions = OrderedSet( [
 	'header', 'blockquote', 'list', 'divider-2',
 	'align', 'indent', 'divider-3',
 	'sup', 'sub', 'code', 'divider-4',
-	'link', 'paragraph'
+	'link', 'table', 'paragraph'
 ] );
 const pluginsMap = Map( {
 	paragraph: KaynParagraphPlugin(),
@@ -52,7 +53,8 @@ const pluginsMap = Map( {
 	list: KaynListPlugin(),
 	align: KaynAlignPlugin(),
 	color: KaynFontColorPlugin(),
-	fontBgColor: KaynFontBgColorPlugin()
+	fontBgColor: KaynFontBgColorPlugin(),
+	table: KaynTablePlugin(),
 } );
 
 const KaynEditor = ( { 

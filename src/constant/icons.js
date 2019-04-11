@@ -21,6 +21,7 @@ const ICONS = {
 	ALIGN_RIGHT: 'faAlignRight',
 	INDENT: 'faIndent',
 	OUTDENT: 'faOutdent',
+	TABLE: 'faTable',
 	// LETTERSPACING: 'LETTERSPACING'
 };
 

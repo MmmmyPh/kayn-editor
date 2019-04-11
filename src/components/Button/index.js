@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 
 import './stylus';
 
-const Button = ( {
+const Button = forwardRef( ( {
 	prefixCls = 'kayn',
 	children,
 	onClick,
@@ -11,7 +11,7 @@ const Button = ( {
 	disabled,
 	className,
 	...props
-} ) => {
+}, ref ) => {
 	const handleClick = ( e ) => {
 		if( !disabled ) {
 			onClick( e );
@@ -20,6 +20,7 @@ const Button = ( {
 
 	return (
 		<button
+			ref = { ref }
 			className = { classnames( `${ prefixCls }__btn`, { [ `${ prefixCls }__btn--active` ]: isActive }, { [ `${ prefixCls }__btn--disabled` ]: disabled }, className ) }
 			onClick = { handleClick }
 			onMouseDown = { e => e.preventDefault() }
@@ -28,6 +29,6 @@ const Button = ( {
 			{children}
 		</button>
 	);
-};
+} );
 
 export default Button;

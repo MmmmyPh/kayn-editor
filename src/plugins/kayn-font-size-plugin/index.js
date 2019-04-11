@@ -1,9 +1,8 @@
 import React from 'react';
-import { Popover } from 'antd';
-import { ChromePicker } from 'react-color';
+import { Dropdown, Menu } from 'antd';
 import basicMark from 'components/basicMark';
 import Button from 'components/button';
-import { Color } from 'components/icon';
+import Icon from 'components/icon';
 import TITLE from 'constant/button-title';
 import { FONTSIZE } from 'constant/marks';
 import overwriteMarks from 'plugins/helpers/overwriteMarks';
