@@ -5937,9 +5937,9 @@ rc-notification@~3.3.0:
     rc-util "^4.0.4"
 
 rc-pagination@~1.17.7:
-  version "1.17.13"
-  resolved "https://registry.yarnpkg.com/rc-pagination/-/rc-pagination-1.17.13.tgz#358391dba39743ccd5c3720c497756d1d236f3ad"
-  integrity sha512-xjwVo28x6H34zyS74akn5s+uicUoPI5GRFmqKMhEAlQIRsOnfZL3ReNmcyN3/JZbyo7d6MtFHsXBeNeLFmCVhw==
+  version "1.17.14"
+  resolved "https://registry.yarnpkg.com/rc-pagination/-/rc-pagination-1.17.14.tgz#ffb2882fd89d95b3b603938dc5db2fb2c30026d3"
+  integrity sha512-VnM0VQcXfw4vf30n2GnY8w44ZvjuuY1N8DvjbxDndTiNrX2vH+BFl4enC1yYIIdyv84jYfP8mWCEQZ+QscdY1A==
   dependencies:
     babel-runtime "6.x"
     prop-types "^15.5.7"
@@ -6171,6 +6171,14 @@ react-dom@^16.8.5:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
+"react-draggable@^2.2.6 || ^3.0.3":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.2.1.tgz#45d09a9a227988dc85674b23ab3c75b6e820dae5"
+  integrity sha512-r+3Bs9InID2lyIEbR8UIRVtpn4jgu1ArFEZgIy8vibJjijLSdNLX7rH9U68BBVD4RD9v44RXbaK4EHLyKXzNQw==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+
 react-hot-loader@^4.8.0:
   version "4.8.3"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.8.3.tgz#14f018777a60ea9cfa60496c7341c2f967311253"
@@ -6226,6 +6234,14 @@ react-modular-table@^1.5.0:
   dependencies:
     styled-components "^3.2.5"
     warning "^3.0.0"
+
+react-resizable@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/react-resizable/-/react-resizable-1.7.5.tgz#83eb75bb3684da6989bbbf4f826e1470f0af902e"
+  integrity sha512-lauPcBsLqmxMHXHpTeOBpYenGalbSikYr8hK+lwtNYMQX1pGd2iYE+pDvZEV97nCnzuCtWM9htp7OpsBIY2Sjw==
+  dependencies:
+    prop-types "15.x"
+    react-draggable "^2.2.6 || ^3.0.3"
 
 react-router-dom@^5.0.0:
   version "5.0.0"
@@ -7546,9 +7562,9 @@ url-loader@^1.1.2:
     schema-utils "^1.0.0"
 
 url-parse@^1.4.3:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.4.tgz#cac1556e95faa0303691fec5cf9d5a1bc34648f8"
-  integrity sha512-/92DTTorg4JjktLNLe6GPS2/RvAd/RGr6LuktmWSMLEOa6rjnlrFXNgSbSmkNvCoL2T028A0a1JaJLzRMlFoHg==
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.5.tgz#04cbb6ba2be682a18e4417fa2245aa7e3dfdcc50"
+  integrity sha512-4XDvC5vZRjEpjP0L4znrWeoH8P8F0XGBlfLdABi/6oV4o8xUVbTpyrxWHxkK2bT0pSIpcjdIzSoWUhlUfawCAQ==
   dependencies:
     querystringify "^2.0.0"
     requires-port "^1.0.0"

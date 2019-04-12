@@ -4,12 +4,13 @@ import DeepTable from 'slate-deep-table';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import {
-	// tableNode,
+	tableNode,
 	tableRowNode,
-	tableCellNode
+	TableCellNode
 } from 'components/tableNode';
 import TITLE from 'constant/button-title';
 import {
+	PARAGRAPH,
 	TABLE,
 	TABLE_ROW,
 	TABLE_CELL,
@@ -22,27 +23,32 @@ const KaynTablePlugin = ( opt ) => {
 		typeCell: TABLE_CELL,
 		...opt
 	};
-	const deepTablePlugin = DeepTable( /* options */ );
+	const deepTablePlugin = DeepTable( options );
 	
 	return {
 		...deepTablePlugin,
-		// renderNode: ( props, editor, next ) => {
-		// 	if ( props.node.type === options.typeTable ) {
-		// 		return tableNode( options )( props );
-		// 	} else if ( props.node.type === options.typeRow ) {
-		// 		return tableRowNode( options )( props );
-		// 	} else if ( props.node.type === options.typeRow ) {
-		// 		return tableCellNode( options )( props );
-		// 	}else {
-		// 		next();
-		// 	}
-		// }
+		renderNode: ( props, editor, next ) => {
+			if ( props.node.type === options.typeTable ) {
+				return tableNode( options )( props, editor );
+			} else if ( props.node.type === options.typeRow ) {
+				return tableRowNode( options )( props );
+			} else if ( props.node.type === options.typeCell ) {
+				return <TableCellNode options={options} {...props} /> 
+			} else {
+				return next();
+			}
+		}
 	};
 };
 
 export const KaynTableButton = ( { editor, onChange, ...rest } ) => {
-	const handleTablePickerChange = ( { roleNumber, columnNumber } ) => {
-		editor.insertTable( columnNumber, roleNumber );
+	const handleTablePickerChange = ( { rowNumber, columnNumber } ) => {
+		// editor
+		// 	.insertBlock(PARAGRAPH)
+		// 	.focus()
+		// 	.moveFocusToEndOfPreviousBlock()
+		
+		editor.insertTable(columnNumber + 1, rowNumber + 1).focus()
 	};
 
 	return (

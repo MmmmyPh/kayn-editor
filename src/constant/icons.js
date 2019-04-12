@@ -22,6 +22,8 @@ const ICONS = {
 	INDENT: 'faIndent',
 	OUTDENT: 'faOutdent',
 	TABLE: 'faTable',
+	DELETE: 'faTrash',
+	TH: 'faThList'
 	// LETTERSPACING: 'LETTERSPACING'
 };
 

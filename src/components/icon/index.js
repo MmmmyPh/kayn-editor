@@ -11,8 +11,12 @@ import HeaderFive from './svgs/header-five';
 import HeaderSix from './svgs/header-six';
 import Color from './svgs/color';
 import Background from './svgs/background';
+import TableInsertRow from './svgs/table-insert-row';
+import TableInsertColumn from './svgs/table-insert-column';
+import TableDeleteRow from './svgs/table-delete-row';
+import TableDeleteColumn from './svgs/table-delete-column';
 
-const Icon = ( { icon } ) => <FontAwesomeIcon icon = { faIcons[ ICONS[ icon ] ] } />;
+const Icon = ( { icon, ...rest } ) => <FontAwesomeIcon icon = { faIcons[ ICONS[ icon ] ] } { ...rest } />;
 
 export default Icon;
 
@@ -25,4 +29,8 @@ export {
 	HeaderSix,
 	Color,
 	Background,
+	TableInsertRow,
+	TableInsertColumn,
+	TableDeleteRow, 
+	TableDeleteColumn,
 };
