@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { OrderedSet, Map } from 'immutable';
 import { Value } from 'slate';
-import typeCheck from 'utils/type-check';
 import KaynWrapper from './kayn-wrapper';
 import KaynToolbar from './kayn-toolbar';
 import KaynContent from './kayn-content';
@@ -24,7 +23,7 @@ import KaynListPlugin from 'plugins/kayn-list-plugin';
 import KaynAlignPlugin from 'plugins/kayn-align-plugin';
 import KaynFontColorPlugin from 'plugins/kayn-font-color-plugin';
 import KaynFontBgColorPlugin from 'plugins/kayn-font-bg-color-plugin';
-import KaynTablePlugin from 'plugins/kayn-table-plugin'
+import KaynTablePlugin from 'plugins/kayn-table-plugin';
 // import stylus
 import './stylus';
 
@@ -35,7 +34,7 @@ const defaultPluginsOptions = OrderedSet( [
 	'bold', 'italic', 'underline', 'strikethough', 'divider-1', 
 	'header', 'blockquote', 'list', 'divider-2',
 	'align', 'indent', 'divider-3',
-	'sup', 'sub', 'code', 'divider-4',
+	'sup', 'sub', 'code', 'codeBlock', 'divider-4',
 	'link', 'table', 'paragraph'
 ] );
 const pluginsMap = Map( {

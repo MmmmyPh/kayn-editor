@@ -15,6 +15,7 @@ import { KaynLinkButton } from 'plugins/kayn-link-plugin';
 import { KaynHeaderButton } from 'plugins/kayn-header-plugin';
 import { KaynBlockquoteButton } from 'plugins/kayn-blockquote-plugin';
 import { KaynCodeButton } from 'plugins/kayn-code-plugin';
+import { KaynCodeBlockButton } from 'plugins/kayn-codeblock-plugin';
 import { KaynListButton } from 'plugins/kayn-list-plugin';
 import { KaynAlignButton } from 'plugins/kayn-align-plugin';
 import { KaynIndentButton } from 'plugins/kayn-indent-plugin';
@@ -42,6 +43,7 @@ const pluginBtnMap = Map( {
 	color: KaynFontColorButton,
 	fontBgColor: KaynFontBgColorButton,
 	table: KaynTableButton,
+	codeBlock: KaynCodeBlockButton,
 } );
 
 const NullTag = () => null;
