@@ -33,7 +33,7 @@ const KaynTablePlugin = ( opt ) => {
 			} else if ( props.node.type === options.typeRow ) {
 				return tableRowNode( options )( props );
 			} else if ( props.node.type === options.typeCell ) {
-				return <TableCellNode options={options} {...props} /> 
+				return <TableCellNode options = { options } { ...props } />;
 			} else {
 				return next();
 			}
@@ -43,12 +43,12 @@ const KaynTablePlugin = ( opt ) => {
 
 export const KaynTableButton = ( { editor, onChange, ...rest } ) => {
 	const handleTablePickerChange = ( { rowNumber, columnNumber } ) => {
-		// editor
-		// 	.insertBlock(PARAGRAPH)
-		// 	.focus()
-		// 	.moveFocusToEndOfPreviousBlock()
-		
-		editor.insertTable(columnNumber + 1, rowNumber + 1).focus()
+		const split = editor.splitBlock();
+		editor
+			.moveToEndOfNode( split.value.previousBlock )
+			.insertTable( columnNumber + 1, rowNumber + 1 )
+			.moveTableSelection( 0, 0 )
+			.focus();
 	};
 
 	return (

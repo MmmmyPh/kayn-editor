@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Resizable } from 'react-resizable';
 import basicNode from 'components/basicNode';
 import KaynTable from 'components/table';

@@ -39,9 +39,8 @@ const KaynTableSelf = ( { attributes, children, node } ) => {
 };
 
 const KaynTable = ( { tableOptions, editor, attributes, children, node, isSelected, readOnly } ) => {
-	if( !isSelected || readOnly ) {
-		return <KaynTableSelf attributes = { attributes } node = { node }>{children}</KaynTableSelf>;
-	}
+
+	const isForbidden = !isSelected || readOnly;
 
 	const handleInertRow = () => editor.insertRow();
 
@@ -55,16 +54,20 @@ const KaynTable = ( { tableOptions, editor, attributes, children, node, isSelect
 
 	const handleRemoveTable = () => editor.removeTable();
 
+	const wrapperCls = isForbidden ? null : `${ prefixCls }__twrapper`;
+
 	return (
-		<div className = { `${ prefixCls }__twrapper` }>
-			<span className = { `${ prefixCls }__ttoolbar` }>
-				<Tooltip title = '插入行'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleInertRow }><TableInsertRow /></span></Tooltip >
-				<Tooltip title = '插入列'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleInertColumn }><TableInsertColumn /></span></Tooltip >
-				<Tooltip title = '删除行'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleDeleteRow }><TableDeleteRow /></span></Tooltip >
-				<Tooltip title = '删除列'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleDeleteColumn }><TableDeleteColumn /></span></Tooltip >
-				<Tooltip title = '切换表头'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleToggleTh }><Icon icon = 'TH' style = { { width: 18, height: 18 } } /></span></Tooltip >
-				<Tooltip title = '删除表格'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleRemoveTable }><Icon icon = 'DELETE' style = { { width: 18, height: 18 } } /></span></Tooltip >
-			</span>
+		<div className = { wrapperCls }>
+			{
+				!isForbidden && <span className = { `${ prefixCls }__ttoolbar` }>
+					<Tooltip title = '插入行'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleInertRow }><TableInsertRow /></span></Tooltip >
+					<Tooltip title = '插入列'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleInertColumn }><TableInsertColumn /></span></Tooltip >
+					<Tooltip title = '删除行'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleDeleteRow }><TableDeleteRow /></span></Tooltip >
+					<Tooltip title = '删除列'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleDeleteColumn }><TableDeleteColumn /></span></Tooltip >
+					<Tooltip title = '切换表头'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleToggleTh }><Icon icon = 'TH' style = { { width: 18, height: 18 } } /></span></Tooltip >
+					<Tooltip title = '删除表格'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleRemoveTable }><Icon icon = 'DELETE' style = { { width: 18, height: 18 } } /></span></Tooltip >
+				</span>
+			}
 			<KaynTableSelf attributes = { attributes } node = { node }>{children}</KaynTableSelf>
 		</div>
 	);
