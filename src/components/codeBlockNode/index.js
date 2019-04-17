@@ -1,11 +1,14 @@
 import React from 'react';
 
-const codeBlockNode = () => {
+const CodeBlockNode = ( props ) => {
+	console.log( '==========' );
+	console.log( props );
+	console.log( '==========' );
 	return (
 		<div>
-			
+			1
 		</div>
 	);
 };
 
-export default codeBlockNode;
+export default CodeBlockNode;
