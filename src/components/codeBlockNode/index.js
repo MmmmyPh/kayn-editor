@@ -1,12 +1,10 @@
 import React from 'react';
 
-const CodeBlockNode = ( props ) => {
-	console.log( '==========' );
-	console.log( props );
-	console.log( '==========' );
+const CodeBlockNode = ( { type, getCodeType, ...restProps } ) => {
+	const codeType = getCodeType();
 	return (
 		<div>
-			1
+			{codeType}
 		</div>
 	);
 };

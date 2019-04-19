@@ -61,6 +61,7 @@
         "react-dom": "^16.8.5",
         "react-resizable": "^1.7.5",
         "react-router-dom": "^5.0.0",
+        "react-syntax-highlighter": "^10.2.1",
         "slate": "^0.44.12",
         "slate-deep-table": "^0.8.0",
         "slate-react": "^0.21.18"

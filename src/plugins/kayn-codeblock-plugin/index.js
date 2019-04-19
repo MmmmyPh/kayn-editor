@@ -6,11 +6,12 @@ import { CODE } from 'constant/blocks';
 import CodeBlockNode from 'components/codeBlockNode';
 import TITLE from 'constant/button-title';
 import CodeTypeSelect from './code-type-select';
+import isInCodeBlock from 'plugins/helpers/isInCodeBlock';
 
 const KaynCodeBlockPlugin = ( opt ) => {
 	const options = {
 		type: CODE,
-		codeType: node => node.data.get( 'codeType' ),
+		getCodeType: node => node.data.get( 'codeType' ),
 		...opt
 	};
 	return {
@@ -24,7 +25,7 @@ const KaynCodeBlockPlugin = ( opt ) => {
 	};
 };
 
-export const KaynCodeBlockButton = () => {
+export const KaynCodeBlockButton = ( { editor, onChange, ...rest } ) => {
 	const [ visible, setVisible ] = useState( false );
 	const [ codeType, setCodeType ] = useState( [] );
 
@@ -35,13 +36,15 @@ export const KaynCodeBlockButton = () => {
 	};
 
 	const handleClick = () => {
-		setVisible( v => !v );
+		const isCodeBlock = isInCodeBlock( editor );
+		if ( isCodeBlock ) {
+
+		}else{
+			setVisible( v => !v );
+		}
 	};
 
 	const handleCodeTypeSelect = ( value ) => {
-		console.log( '==========' );
-		console.log( value );
-		console.log( '==========' );
 		setCodeType( value );
 		setVisible( false );
 	};
