@@ -4,7 +4,7 @@ import codeTypes from './code-types';
 
 const Option = Select.Option;
 
-const CodeTypeSelect = ( { value, onSelect } ) => {
+const CodeTypeSelect = ( { value, onSelect, ...rest } ) => {
 	return (
 		<Select
 			value = { value }
@@ -13,6 +13,7 @@ const CodeTypeSelect = ( { value, onSelect } ) => {
 			style = { { width: '100%' } }
 			placeholder = '选择代码类型'
 			filterOption = { ( input, option ) => option.props.children.props.children.toLowerCase().indexOf( input.toLowerCase() ) >= 0 }
+			{ ...rest }
 		>
 			{
 				codeTypes.map( item => <Option key = { item } value = { item }><span title = { item }>{item}</span></Option> )

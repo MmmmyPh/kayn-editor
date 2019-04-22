@@ -2,22 +2,26 @@ import React, { useState } from 'react';
 import { Popover } from 'antd';
 import Button from 'components/button';
 import Icon from 'components/icon';
-import { CODE } from 'constant/blocks';
-import CodeBlockNode from 'components/codeBlockNode';
+import { CodeBlockNode, CodeLineNode } from 'components/codeBlockNode';
+import CodeTypeSelect from 'components/codeTypeSelect';
+import { CODE, CODE_LINE } from 'constant/blocks';
 import TITLE from 'constant/button-title';
-import CodeTypeSelect from './code-type-select';
 import isInCodeBlock from 'plugins/helpers/isInCodeBlock';
+import wrapCodeBlock from 'plugins/helpers/wrapCodeBlock';
 
 const KaynCodeBlockPlugin = ( opt ) => {
 	const options = {
-		type: CODE,
+		typeCode: CODE,
+		typeCodeLine: CODE_LINE,
 		getCodeType: node => node.data.get( 'codeType' ),
 		...opt
 	};
 	return {
 		renderNode: ( props, editor, next ) => {
-			if( props.node.type === options.type ) {
+			if ( props.node.type === options.typeCode ) {
 				return <CodeBlockNode { ...options } { ...props } />;
+			} else if ( props.node.type === options.typeCodeLine ) {
+				return <CodeLineNode { ...props } />;
 			}else{
 				return next();
 			}
@@ -38,14 +42,22 @@ export const KaynCodeBlockButton = ( { editor, onChange, ...rest } ) => {
 	const handleClick = () => {
 		const isCodeBlock = isInCodeBlock( editor );
 		if ( isCodeBlock ) {
-
+			editor.unwrapBlock( CODE );
 		}else{
 			setVisible( v => !v );
+			setCodeType( [] );
 		}
 	};
 
-	const handleCodeTypeSelect = ( value ) => {
-		setCodeType( value );
+	const handleCodeTypeSelect = ( lang ) => {
+		if( lang ) {
+			wrapCodeBlock( editor, lang );
+			// editor.setBlocks( { 
+			// 	type: CODE,
+			// 	data: { codeType: lang } 
+			// } );
+		}
+		setCodeType( lang );
 		setVisible( false );
 	};
 

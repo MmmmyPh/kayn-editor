@@ -5,7 +5,7 @@ const TITLE = {
 	// format
 	BOLD: '加粗',
 	ITALIC: '斜体',
-	CODE_LINE: '行内代码',
+	CODE_IN_LINE: '行内代码',
 	CODE_BLOCK: '代码块',
 	STRIKETHROUGH: '中划线',
 	UNDERLINE: '下划线',

@@ -4,20 +4,20 @@ import Icon from 'components/icon';
 import TITLE from 'constant/button-title';
 import getIn from 'utils/get-in';
 
-const UNDO = 'UNDO';
-const REDO = 'REDO';
+const UNDOS = 'UNDOS';
+const REDOS = 'REDOS';
 
-const HistoryButton = ( { type,editor, ...rest } ) => {
+const HistoryButton = ( { type, editor, ...rest } ) => {
 	const data = getIn( editor, 'value.data' );
 	const history = data && data.get( type.toLowerCase() );
 	const disabled = history && history.size !== 0 ? false : true;
 
 	const onClick = ( event ) => {
 		switch ( type ) {
-			case UNDO:
+			case UNDOS:
 				editor.undo();
 				break;
-			case REDO:
+			case REDOS:
 				editor.redo();
 				break;
 			default:

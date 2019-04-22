@@ -1,9 +1,9 @@
 const ICONS = {
-	UNDO: [ 'fas', 'faUndo' ],
-	REDO: [ 'fas', 'faRedo' ],
+	UNDOS: [ 'fas', 'faUndo' ],
+	REDOS: [ 'fas', 'faRedo' ],
 	BOLD: [ 'fas', 'faBold' ],
 	ITALIC: [ 'fas', 'faItalic' ],
-	CODE_LINE: [ 'fas', 'faCode' ],
+	CODE_IN_LINE: [ 'fas', 'faCode' ],
 	CODE_BLOCK: [ 'fas', 'faFileCode' ],
 	STRIKETHROUGH:[ 'fas', 'faStrikethrough' ],
 	UNDERLINE:[ 'fas', 'faUnderline' ],

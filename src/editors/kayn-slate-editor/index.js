@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { OrderedSet, Map } from 'immutable';
 import { Value } from 'slate';
+import Plain from 'slate-plain-serializer';
 import KaynWrapper from './kayn-wrapper';
 import KaynToolbar from './kayn-toolbar';
 import KaynContent from './kayn-content';
@@ -19,6 +20,7 @@ import KaynLinkPlugin from 'plugins/kayn-link-plugin';
 import HeaderPlugin from 'plugins/kayn-header-plugin';
 import KaynBlockquotePlugin from 'plugins/kayn-blockquote-plugin';
 import KaynCodePlugin from 'plugins/kayn-code-plugin';
+import KaynCodeBlockPlugin from 'plugins/kayn-codeblock-plugin';
 import KaynListPlugin from 'plugins/kayn-list-plugin';
 import KaynAlignPlugin from 'plugins/kayn-align-plugin';
 import KaynFontColorPlugin from 'plugins/kayn-font-color-plugin';
@@ -34,7 +36,7 @@ const defaultPluginsOptions = OrderedSet( [
 	'bold', 'italic', 'underline', 'strikethough', 'divider-1', 
 	'header', 'blockquote', 'list', 'divider-2',
 	'align', 'indent', 'divider-3',
-	'sup', 'sub', 'code', 'codeBlock', 'divider-4',
+	'sup', 'sub', 'code', /* 'codeBlock', */ 'divider-4',
 	'link', 'table', 'paragraph'
 ] );
 const pluginsMap = Map( {
@@ -46,6 +48,7 @@ const pluginsMap = Map( {
 	sup: KaynSupPlugin(),
 	sub: KaynSubPlugin(),
 	code: KaynCodePlugin(),
+	codeBlock: KaynCodeBlockPlugin(),
 	link: KaynLinkPlugin(),
 	header: HeaderPlugin(),
 	blockquote: KaynBlockquotePlugin(),
@@ -62,10 +65,10 @@ const KaynEditor = ( {
 	wrapperClassName = '',
 	excludePlugins = [],
 	mode = 'normal',
-	// value = '',
-	// onChange = () => {}
+	value = '',
+	onChange = () => {}
 } ) => {
-	const [ value, setValue ] = useState( () => parseImmutable( /* value || */ initialEditorState ) );
+	const [ editorValue, setValue ] = useState( () => parseImmutable( value || initialEditorState ) );
 	const [ isReadOnly, setIsReadOnly ] = useState( readOnly );
 	const [ runningPlugins, setRunningPlugins ] = useState( defaultPluginsOptions );
 	const [ plugins, setPlugins ] = useState( [] );
@@ -76,15 +79,27 @@ const KaynEditor = ( {
 		setPlugins( () => runningPlugins.map( use => pluginsMap.get( use ) || {} ).toArray().flat() );
 	}, excludePlugins );
 
+	useEffect( () => {
+		setIsReadOnly( readOnly );
+	}, [ readOnly ] );
+
+	const handleChange = ( value ) => {
+		setValue( value );
+		onChange( value );
+	};
+
 	return <KaynWrapper prefixCls = { prefixCls } className = { wrapperClassName }>
-		<KaynValueContext.Provider value = { { value, setValue } }>
-			<KaynToolbar 
-				prefixCls = { prefixCls } 
-				runningPlugins = { runningPlugins }
-				editor = { editorRef.current }
-			>
-			</KaynToolbar>
+		<KaynValueContext.Provider value = { { editorValue, handleChange } }>
+			{
+				!isReadOnly && <KaynToolbar
+					prefixCls = { prefixCls }
+					runningPlugins = { runningPlugins }
+					editor = { editorRef.current }
+				>
+				</KaynToolbar>
+			}
 			<KaynContent 
+				isReadOnly = { isReadOnly }
 				prefixCls = { prefixCls }
 				plugins = { plugins }
 				ref = { editorRef }
@@ -104,3 +119,11 @@ KaynEditor.propTypes = {
 };
 
 export default KaynEditor;
+
+const plainDeserialize = Plain.deserialize;
+const plainSerialize = Plain.serialize;
+
+export {
+	plainDeserialize,
+	plainSerialize
+};

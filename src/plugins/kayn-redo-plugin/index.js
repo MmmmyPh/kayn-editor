@@ -1,8 +1,8 @@
 import React from 'react';
 import HistoryButton from 'components/historyButton';
 
-const REDO = 'REDO';
+const REDOS = 'REDOS';
 
-const KaynRedoButton = ( props ) => <HistoryButton type = { REDO } { ...props } />;
+const KaynRedoButton = ( props ) => <HistoryButton type = { REDOS } { ...props } />;
 
 export { KaynRedoButton };

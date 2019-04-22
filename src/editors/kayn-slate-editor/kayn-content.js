@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import { Editor } from 'slate-react';
 import { KaynValueContext } from './kayn-context';
 
-const KaynContent = forwardRef( ( { prefixCls, plugins }, ref ) => {
-	const { value, setValue } = useContext( KaynValueContext );
+const KaynContent = forwardRef( ( { prefixCls, plugins, isReadOnly }, ref ) => {
+	const { editorValue, handleChange } = useContext( KaynValueContext );
 	return (
 		<div
 			className = { classnames( `${ prefixCls }__content` ) }
@@ -13,8 +13,9 @@ const KaynContent = forwardRef( ( { prefixCls, plugins }, ref ) => {
 				ref = { ref }
 				className = { classnames( `${ prefixCls }__core` ) }
 				plugins = { plugins }
-				value = { value }
-				onChange = { ( { value } ) => setValue( value ) }
+				readOnly = { isReadOnly }
+				value = { editorValue }
+				onChange = { ( { value } ) => handleChange( value ) }
 			/>
 		</div>
 	);
