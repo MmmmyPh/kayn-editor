@@ -67,6 +67,7 @@
         "react-resizable": "^1.7.5",
         "react-router-dom": "^5.0.0",
         "slate-deep-table": "^0.8.0",
+        "slate-html-serializer": "^0.7.38",
         "slate-plain-serializer": "^0.6.38"
     }
 }
