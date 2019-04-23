@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import KaynEditor, { 
 	htmlDeserialize, htmlSerialize,
 	plainDeserialize, plainSerialize 
-} from '../src/editors/kayn-slate-editor';
+} from '../src';
 
 const App = () => {
 	const [ value, setValue ] = useState();

@@ -5,6 +5,7 @@
 	&__wrapper
 		border(1px solid $color-border-base)
 		border-radius: 5px
+		background: #fff
 	&__toolbar
 		margin: 0
 		padding: 0 5px
@@ -15,6 +16,16 @@
 		overflow-y: auto
 	&__core
 		height 100%
+	&--fullscreen
+		poFix()
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 10001
+		& .kayn__content
+			padding: 1% 1% 25px
+			height: 100%
 	&__blockquote
 		border-left: 4px solid #ccc
 		margin-bottom: 5px

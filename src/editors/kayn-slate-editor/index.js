@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { OrderedSet, Map } from 'immutable';
 import { Value } from 'slate';
@@ -70,6 +71,7 @@ const KaynEditor = ( {
 } ) => {
 	const [ editorValue, setValue ] = useState( () => parseImmutable( value || initialEditorState ) );
 	const [ isReadOnly, setIsReadOnly ] = useState( readOnly );
+	const [ isFullscreen, setFullscreen ] = useState( false );
 	const [ runningPlugins, setRunningPlugins ] = useState( defaultPluginsOptions );
 	const [ plugins, setPlugins ] = useState( [] );
 	const editorRef = useRef( null );
@@ -88,11 +90,17 @@ const KaynEditor = ( {
 		onChange( value );
 	};
 
-	return <KaynWrapper prefixCls = { prefixCls } className = { wrapperClassName }>
+	const handleGoFull = () => setFullscreen( full => !full );
+
+	const wrapperClsStr = classnames( wrapperClassName, { [ `${ prefixCls }--fullscreen` ] : isFullscreen } );
+
+	return <KaynWrapper prefixCls = { prefixCls } className = { wrapperClsStr }>
 		<KaynValueContext.Provider value = { { editorValue, handleChange } }>
 			{
 				!isReadOnly && <KaynToolbar
 					prefixCls = { prefixCls }
+					isFull = { isFullscreen }
+					goFull = { handleGoFull }
 					runningPlugins = { runningPlugins }
 					editor = { editorRef.current }
 				>

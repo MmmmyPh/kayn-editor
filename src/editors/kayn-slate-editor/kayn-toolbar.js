@@ -22,6 +22,7 @@ import { KaynIndentButton } from 'plugins/kayn-indent-plugin';
 import { KaynFontColorButton } from 'plugins/kayn-font-color-plugin';
 import { KaynFontBgColorButton } from 'plugins/kayn-font-bg-color-plugin';
 import { KaynTableButton } from 'plugins/kayn-table-plugin';
+import Fullscreen from 'components/fullscreen';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
@@ -48,22 +49,27 @@ const pluginBtnMap = Map( {
 
 const NullTag = () => null;
 
-const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, ...restProps } ) => {
+const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, isFull, goFull, ...restProps } ) => {
 	const unRedo = [
 		<KaynUndoButton key = 'undo' editor = { editor } />,
 		<KaynRedoButton key = 'redo' editor = { editor } />,
 		<Divider key = { 'divider--1' } />,
 	];
-	const pluginsArr = unRedo.concat( runningPlugins.map( ( key, index ) => {
-		if ( /^divider/.test( key ) ) {
-			key = 'divider';
-		}
-		const Tag = pluginBtnMap.get( key ) || NullTag;
-		return <Tag
-			key = { `${ key }-${ index }` }
-			editor = { editor }
-		/>;
-	} ) );
+	const pluginsArr = unRedo
+		.concat( runningPlugins.map( ( key, index ) => {
+			if ( /^divider/.test( key ) ) {
+				key = 'divider';
+			}
+			const Tag = pluginBtnMap.get( key ) || NullTag;
+			return <Tag
+				key = { `${ key }-${ index }` }
+				editor = { editor }
+			/>;
+		} ) )
+		.concat( [
+			<Divider key = { 'divider--2' } />, 
+			<Fullscreen key = 'fullscreen' isFull = { isFull } goFull = { goFull } /> 
+		] );
 
 	return (
 		<div
