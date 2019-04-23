@@ -22,6 +22,7 @@ import { KaynIndentButton } from 'plugins/kayn-indent-plugin';
 import { KaynFontColorButton } from 'plugins/kayn-font-color-plugin';
 import { KaynFontBgColorButton } from 'plugins/kayn-font-bg-color-plugin';
 import { KaynTableButton } from 'plugins/kayn-table-plugin';
+import { KaynImageButton } from 'plugins/kayn-image-plugin';
 import Fullscreen from 'components/fullscreen';
 
 const pluginBtnMap = Map( {
@@ -45,6 +46,7 @@ const pluginBtnMap = Map( {
 	fontBgColor: KaynFontBgColorButton,
 	table: KaynTableButton,
 	codeBlock: KaynCodeBlockButton,
+	image: KaynImageButton,
 } );
 
 const NullTag = () => null;

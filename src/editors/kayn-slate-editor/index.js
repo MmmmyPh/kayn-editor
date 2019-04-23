@@ -38,7 +38,7 @@ const defaultPluginsOptions = OrderedSet( [
 	'header', 'blockquote', 'list', 'divider-2',
 	'align', 'indent', 'divider-3',
 	'sup', 'sub', 'code', /* 'codeBlock', */ 'divider-4',
-	'link', 'table', 'paragraph'
+	'link', 'table', 'image', 'paragraph'
 ] );
 const pluginsMap = Map( {
 	paragraph: KaynParagraphPlugin(),

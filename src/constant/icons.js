@@ -24,7 +24,8 @@ const ICONS = {
 	OUTDENT:[ 'fas', 'faOutdent' ],
 	TABLE:[ 'fas', 'faTable' ],
 	DELETE:[ 'fas', 'faTrash' ],
-	TH:[ 'fas', 'faThList' ]
+	TH:[ 'fas', 'faThList' ],
+	IMAGE: [ 'fas', 'faFileImage' ],
 	// LETTERSPACING: 'LETTERSPACING'
 };
 
