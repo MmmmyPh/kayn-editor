@@ -35,11 +35,23 @@ module.exports = merge( commonConfig, {
 			root: '_'
 		},
 		reactDom: {
-			commonjs: 'reactDom',
-			commonjs2: 'reactDom',
-			amd: 'reactDom',
+			commonjs: 'react-dom',
+			commonjs2: 'react-dom',
+			amd: 'react-dom',
 			root: '_'
-		}
+		},
+		slate: {
+			commonjs: 'slate',
+			commonjs2: 'slate',
+			amd: 'slate',
+			root: '_'
+		},
+		slateReact: {
+			commonjs: 'slate-react',
+			commonjs2: 'slate-react',
+			amd: 'slate-react',
+			root: '_'
+		},
 	},
 	
 	plugins: [
