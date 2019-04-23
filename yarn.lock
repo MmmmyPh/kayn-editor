@@ -6944,17 +6944,10 @@ slate-hotkeys@^0.2.9:
     is-hotkey "0.1.4"
     slate-dev-environment "^0.2.2"
 
-slate-html-serializer@^0.7.20:
+slate-html-serializer@^0.7.20, slate-html-serializer@^0.7.38:
   version "0.7.38"
   resolved "https://registry.yarnpkg.com/slate-html-serializer/-/slate-html-serializer-0.7.38.tgz#fb7223d08c97673b6e92378c839d22a68723aa99"
   integrity sha512-T6RTf1shBzZAm0Vl6MaPrJE3Kxqf/4K87/CDpPUA8hA86GQ8hjYSleeOTbS0UEYwSPp1VG+NaRsD6MyMpf4S6A==
-  dependencies:
-    type-of "^2.0.1"
-
-slate-html-serializer@^0.7.38:
-  version "0.7.38"
-  resolved "http://cnpm.800best.com:7001/slate-html-serializer/download/slate-html-serializer-0.7.38.tgz#fb7223d08c97673b6e92378c839d22a68723aa99"
-  integrity sha1-+3Ij0IyXZztukjeMg50ipocjqpk=
   dependencies:
     type-of "^2.0.1"
 

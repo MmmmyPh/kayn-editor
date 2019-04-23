@@ -6,7 +6,7 @@ import TITLE from 'constant/button-title';
 import { IMAGE } from 'constant/blocks';
 import { haveInlines } from 'utils/have';
 import inlineLinks from 'plugins/helpers/inlineLinks';
-// import LinkForm from './link-form';
+import ImageUpload from './image-upload';
 
 const KaynLinkPlugin = ( opt ) => {
 	const options = {
@@ -88,7 +88,7 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 	return (
 		<Popover
 			visible = { visible }
-			content = { <div
+			content = { <ImageUpload
 				// visible = { visible }
 				// url = { url }
 				// text = { text }
