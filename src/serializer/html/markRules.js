@@ -8,7 +8,14 @@ import {
 	UNDERLINE,
 	SUP,
 	SUB,
-} from '../../constant/marks';
+	LETTERSPACING,
+	FONTSIZE,
+} from 'constant/marks';
+
+const dataBG = 'data-bg';
+const dataColor = 'data-color';
+const dataFontSize = 'data-fontsize';
+const dataLetterSpacing = 'data-letterspacing';
 
 // Add a new rule that handles marks...
 const markRules = [ {
@@ -18,29 +25,48 @@ const markRules = [ {
 			return {
 				object: 'mark',
 				type: type,
+				data: {
+					className: el.getAttribute( 'class' ),
+					bgColor: el.getAttribute( dataBG ),
+					color: el.getAttribute( dataColor ),
+					fontSize: el.getAttribute( dataFontSize ),
+					letterSpacing: el.getAttribute( dataLetterSpacing ),
+				},
 				nodes: next( el.childNodes ),
 			};
 		}
 	},
 	serialize( obj, children ) {
 		if ( obj.object === 'mark' ) {
+			const markDataAttrs = {
+				[ dataBG ]: obj.data.getIn( [ 'bgColor'/* , 'color' */ ] ),
+				[ dataColor ]: obj.data.getIn( [ 'color'/* , 'color' */ ] ),
+				[ dataFontSize ]: obj.data.get( FONTSIZE ),
+				[ dataLetterSpacing ]: obj.data.get( LETTERSPACING )
+			};
+			const markStyleAttrs = {
+				backgroundColor: obj.data.getIn( [ 'bgColor'/* , 'color' */ ] ),
+				color: obj.data.getIn( [ 'color'/* , 'color' */ ] ),
+				fontSize: obj.data.get( FONTSIZE ),
+				letterSpacing: obj.data.get( LETTERSPACING )
+			};
 			switch ( obj.type ) {
 				case BOLD:
-					return <strong className = { obj.data.get( 'className' ) }>{children}</strong>;
+					return <strong className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</strong>;
 				case ITALIC:
-					return <i>{children}</i>;
+					return <i className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</i>;
 				case UNDERLINE:
-					return <u>{children}</u>;
+					return <u className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</u>;
 				case STRIKETHROUGH:
-					return <s>{children}</s>;
+					return <s className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</s>;
 				case CODE_IN_LINE:
-					return <code>{children}</code>;
+					return <code className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</code>;
 				case SUP:
-					return <sup>{children}</sup>;
+					return <sup className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</sup>;
 				case SUB:
-					return <sub>{children}</sub>;
+					return <sub className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</sub>;
 				default:
-					return <span>{children}</span>;
+					return <span className = { obj.data.get( 'className' ) } style = { markStyleAttrs } { ...markDataAttrs }>{children}</span>;
 			}
 		}
 	},

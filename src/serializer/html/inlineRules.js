@@ -12,6 +12,9 @@ const inlineRules = [ {
 			return {
 				object: 'inline',
 				type: type,
+				data: {
+					className: el.getAttribute( 'class' ),
+				},
 				nodes: next( el.childNodes ),
 			};
 		}
@@ -20,7 +23,7 @@ const inlineRules = [ {
 		if ( obj.object === 'inline' ) {
 			switch ( obj.type ) {
 				case LINK:
-					return <a className = { obj.data.get( 'className' ) }>{children}</a>;
+					return <a className = { obj.data.get( 'className' ) } target = '_blank'>{children}</a>;
 				case IMAGE:
 					return <img
 						src = { obj.data.get( 'src' ) }
