@@ -1,7 +1,8 @@
 import React from 'react';
 import INLINE_TAGS from './inlineTags';
 import {
-	LINK
+	LINK,
+	IMAGE,
 } from '../../constant/inlines';
 
 const inlineRules = [ {
@@ -19,10 +20,13 @@ const inlineRules = [ {
 		if ( obj.object === 'inline' ) {
 			switch ( obj.type ) {
 				case LINK:
-					console.log( '==========' );
-					console.log( obj.data.toJS() );
-					console.log( '==========' );
 					return <a className = { obj.data.get( 'className' ) }>{children}</a>;
+				case IMAGE:
+					return <img
+						src = { obj.data.get( 'src' ) }
+						width = { obj.data.get( 'width' ) } height = { obj.data.get( 'height' ) }
+						style = { { display: 'inline-block' } }
+					/>;
 				default:
 					return <span>{children}</span>;
 			}

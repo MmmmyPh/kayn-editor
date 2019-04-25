@@ -27,6 +27,7 @@ import KaynAlignPlugin from 'plugins/kayn-align-plugin';
 import KaynFontColorPlugin from 'plugins/kayn-font-color-plugin';
 import KaynFontBgColorPlugin from 'plugins/kayn-font-bg-color-plugin';
 import KaynTablePlugin from 'plugins/kayn-table-plugin';
+import KaynImagePlugin from 'plugins/kayn-image-plugin';
 // import stylus
 import './stylus';
 
@@ -58,6 +59,7 @@ const pluginsMap = Map( {
 	color: KaynFontColorPlugin(),
 	fontBgColor: KaynFontBgColorPlugin(),
 	table: KaynTablePlugin(),
+	image: KaynImagePlugin()
 } );
 
 const KaynEditor = ( { 

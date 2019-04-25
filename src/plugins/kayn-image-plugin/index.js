@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Popover } from 'antd';
-import Button from 'components/button';
-import Icon from 'components/icon';
-import TITLE from 'constant/button-title';
-import { IMAGE } from 'constant/blocks';
-import { haveInlines } from 'utils/have';
-import inlineLinks from 'plugins/helpers/inlineLinks';
+import { Popover, Button as AntButton } from 'antd';
+import Button from '../../components/button';
+import Icon from '../../components/icon';
+import TITLE from '../../constant/button-title';
+import ImageNode from '../../components/imageNode';
+import { IMAGE } from '../../constant/inlines';
+import { haveInlines } from '../../utils/have';
 import ImageUpload from './image-upload';
 
-const KaynLinkPlugin = ( opt ) => {
+const KaynImagePlugin = ( opt ) => {
 	const options = {
 		type: IMAGE,
 		getSrc: node => node.data.get( 'src' ),
@@ -19,8 +19,7 @@ const KaynLinkPlugin = ( opt ) => {
 	return {
 		renderNode: ( props, editor, next ) => {
 			if ( props.node.type === options.type ) {
-				return <div>images</div>;
-				// return <LinkNode options={options} {...props} />;
+				return <ImageNode options = { options } { ...props } />;
 			} else {
 				return next();
 			}
@@ -28,22 +27,29 @@ const KaynLinkPlugin = ( opt ) => {
 	};
 };
 
-const initialState = {
-	value: null
+const headerStyle = {
+	display: 'flex',
+	justifyContent: 'space-between',
+	alignItems: 'center',
+	margin: '5px 0'
 };
+
+const ImagePopHeader = ( { onConfirm } ) => (
+	<div style = { headerStyle }>
+		<span>添加图片</span>
+		<AntButton size = 'small' type = 'primary' onClick = { onConfirm }>确认添加</AntButton>
+	</div>
+);
 
 export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 	const [ visible, setVisible ] = useState( false );
-	const [ url, setUrl ] = useState( initialState );
-	const [ text, setText ] = useState( initialState );
-	const [ needText, setNeedText ] = useState( false );
+	const [ fileList, setFileList ] = useState( [] );
 
-	// const haveLinks = editor ? haveInlines( editor, IMAGE ) : false;
+	const haveImages = editor ? haveInlines( editor, IMAGE ) : false;
 
 	const handleCancel = () => {
 		setVisible( false );
-		// setUrl( initialState );
-		// setText( initialState );
+		setFileList( [] );
 	};
 
 	const handleVisibleChange = ( v ) => {
@@ -52,19 +58,15 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 		}
 	};
 
-	// const handleFormChange = ( changedFields ) => {
-	// 	if ( 'text' in changedFields ) {
-	// 		setText( changedFields.text );
-	// 	} else if ( 'url' in changedFields ) {
-	// 		setUrl( changedFields.url );
-	// 	}
-	// };
+	const handleChange = ( fileList ) => {
+		setFileList( fileList );
+	};
 
 	const handleClick = ( e ) => {
 		if ( e ) {
 			e.preventDefault();
 		}
-		// const haveLinks = haveInlines( editor, IMAGE );
+		// const haveLinks = haveImages( editor, IMAGE );
 		// const isExpanded = editor.value.selection.isExpanded;
 
 		// if ( haveLinks ) {
@@ -73,38 +75,43 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 		// 	setNeedText( false );
 		// 	setVisible( true );
 		// } else {
-		setNeedText( true );
+		// setNeedText( true );
 		setVisible( true );
 		// }
 	};
 
-	// const handleConfirm = () => {
-	// 	if ( url.errors === undefined ) {
-	// 		inlineLinks( editor, IMAGE, { href: url.value, text: text.value || url.value } );
-	// 		handleCancel();
-	// 	}
-	// };
+	const handleConfirm = () => {
+		fileList.forEach( file => {
+			editor.insertInline( {
+				type: IMAGE,
+				data: {
+					src: file.base64Url,
+					size: file.size,
+					width: file.width,
+					height: file.height
+				}
+			} );
+		} );
+		handleCancel();
+	};
 
 	return (
 		<Popover
 			visible = { visible }
 			content = { <ImageUpload
-				// visible = { visible }
-				// url = { url }
-				// text = { text }
-				// needText = { needText }
-				// onChange = { handleFormChange }
-				// onConfirm = { handleConfirm }
+				fileList = { fileList }
+				onChange = { handleChange }
 			/> }
-			title = '插入图片'
+			title = { <ImagePopHeader onConfirm = { handleConfirm } /> }
 			trigger = 'click'
+			placement = 'bottom'
 			onVisibleChange = { handleVisibleChange }
 		>
 			<Button
 				type = { IMAGE }
 				data-title = { TITLE[ IMAGE.toUpperCase() ] }
 				onClick = { handleClick }
-				// isActive = { haveLinks }
+				isActive = { haveImages }
 				{ ...rest }
 			>
 				<Icon icon = { IMAGE.toUpperCase() } />
@@ -113,4 +120,4 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 	);
 };
 
-export default KaynLinkPlugin;
+export default KaynImagePlugin;
