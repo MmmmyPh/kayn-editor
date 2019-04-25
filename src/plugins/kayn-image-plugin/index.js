@@ -82,15 +82,19 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 
 	const handleConfirm = () => {
 		fileList.forEach( file => {
-			editor.insertInline( {
-				type: IMAGE,
-				data: {
-					src: file.base64Url,
-					size: file.size,
-					width: file.width,
-					height: file.height
-				}
-			} );
+			editor
+				.insertText( '\u200B' )
+				.insertInline( {
+					type: IMAGE,
+					data: {
+						src: file.base64Url,
+						size: file.size,
+						width: file.width,
+						height: file.height
+					}
+				} )
+				.insertText( '\u200B' )
+				.focus();
 		} );
 		handleCancel();
 	};
