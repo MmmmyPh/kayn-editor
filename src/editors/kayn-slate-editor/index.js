@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { OrderedSet, Map } from 'immutable';
@@ -62,7 +62,7 @@ const pluginsMap = Map( {
 	image: KaynImagePlugin()
 } );
 
-const KaynEditor = ( { 
+const KaynEditor = forwardRef( ( { 
 	prefixCls = 'kayn', 
 	readOnly = false,
 	wrapperClassName = '',
@@ -70,7 +70,7 @@ const KaynEditor = ( {
 	mode = 'normal',
 	value = '',
 	onChange = () => {}
-} ) => {
+}, ref ) => {
 	const [ editorValue, setValue ] = useState( () => parseImmutable( value || initialEditorState ) );
 	const [ isReadOnly, setIsReadOnly ] = useState( readOnly );
 	const [ isFullscreen, setFullscreen ] = useState( false );
@@ -116,7 +116,7 @@ const KaynEditor = ( {
 			/>
 		</KaynValueContext.Provider>
 	</KaynWrapper>;
-};
+} );
 
 KaynEditor.propTypes = {
 	prefixCls: PropTypes.string,
