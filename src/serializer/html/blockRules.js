@@ -29,7 +29,7 @@ const blockRules = [ {
 	deserialize( el, next ) {
 		const type = BLOCK_TAGS[ el.tagName.toLowerCase() ];
 		if ( type ) {
-			const indent = el.getAttribute( dataPaddingLeft ) ? parseInt( el.getAttribute( dataPaddingLeft ) ) / 3 : undefined;
+			const indent = el && el.getAttribute && el.getAttribute( dataPaddingLeft ) ? parseInt( el.getAttribute( dataPaddingLeft ) ) / 3 : 0;
 			return {
 				object: 'block',
 				type: type,
