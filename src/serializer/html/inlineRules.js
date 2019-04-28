@@ -3,7 +3,7 @@ import INLINE_TAGS from './inlineTags';
 import {
 	LINK,
 	IMAGE,
-} from '../../constant/inlines';
+} from 'constant/inlines';
 
 const inlineRules = [ {
 	deserialize( el, next ) {

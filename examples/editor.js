@@ -6,12 +6,20 @@ import KaynEditor, {
 	plainDeserialize, plainSerialize 
 } from '../src';
 
+const initialValue = localStorage.getItem( 'htmlContent' ) || '<p>Kayn Editor Demo.</p>';
+
 const App = () => {
-	const [ value, setValue ] = useState();
+	const [ value, setValue ] = useState( () => htmlDeserialize( initialValue ) );
 	const [ readOnly, setReadOnly ] = useState( false );
 
-	const handleOnChange = ( value ) => {
-		setValue( value );
+	const handleOnChange = ( change ) => {
+		if ( change.document != value.document ) {
+			const htmlString = htmlSerialize( change );
+			const plainString = plainSerialize( change );
+			localStorage.setItem( 'htmlContent', htmlString );
+			localStorage.setItem( 'plainContent', plainString );
+		}
+		setValue( change );
 	};
 
 	const onSaveString = () => {

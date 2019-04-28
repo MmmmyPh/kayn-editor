@@ -10,17 +10,33 @@ import {
 	SUB,
 	LETTERSPACING,
 	FONTSIZE,
+	FONTBGCOLOR,
+	FONTCOLOR,
 } from 'constant/marks';
 
 const dataBG = 'data-bg';
 const dataColor = 'data-color';
 const dataFontSize = 'data-fontsize';
 const dataLetterSpacing = 'data-letterspacing';
+const dataAttrToType = {
+	[ dataBG ]: FONTBGCOLOR,
+	[ dataColor ]: FONTCOLOR,
+	[ dataFontSize ]: FONTSIZE,
+	[ dataLetterSpacing ]: LETTERSPACING,
+};
 
 // Add a new rule that handles marks...
 const markRules = [ {
 	deserialize( el, next ) {
-		const type = MARK_TAGS[ el.tagName.toLowerCase() ];
+		const tagName = el.tagName.toLowerCase();
+		let type = MARK_TAGS[ tagName ];
+		if ( tagName === 'span' ) {
+			Object.entries( dataAttrToType ).forEach( ( [ key, value ] ) => {
+				if ( el.hasAttribute( key ) ) {
+					type = value;
+				}
+			} );
+		}
 		if ( type ) {
 			return {
 				object: 'mark',

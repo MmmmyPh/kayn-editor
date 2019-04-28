@@ -29,13 +29,14 @@ const blockRules = [ {
 	deserialize( el, next ) {
 		const type = BLOCK_TAGS[ el.tagName.toLowerCase() ];
 		if ( type ) {
+			const indent = el.getAttribute( dataPaddingLeft ) ? parseInt( el.getAttribute( dataPaddingLeft ) ) / 3 : undefined;
 			return {
 				object: 'block',
 				type: type,
 				data: {
 					className: el.getAttribute( 'class' ),
-					textAlign: el.getAttribute( dataTextAlign ),
-					paddingLeft: el.getAttribute( dataPaddingLeft ),
+					align: el.getAttribute( dataTextAlign ),
+					indent: indent,
 					lineHeight: el.getAttribute( dataLineHeight ),
 					width: el.getAttribute( dataWidth ),
 					height: el.getAttribute( dataHeight )
