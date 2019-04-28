@@ -87,6 +87,10 @@ const KaynEditor = forwardRef( ( {
 		setIsReadOnly( readOnly );
 	}, [ readOnly ] );
 
+	useEffect( () => {
+		setValue( parseImmutable( value ) );
+	}, [ value ] );
+
 	const handleChange = ( value ) => {
 		setValue( value );
 		onChange( value );
