@@ -52,7 +52,7 @@ const KaynTable = ( { tableOptions, editor, attributes, children, node, isSelect
 
 	const handleToggleTh = () => editor.toggleTableHeaders();
 
-	const handleRemoveTable = () => editor.removeTable();
+	const handleRemoveTable = () => editor.removeNodeByKey( node.key );
 
 	const wrapperCls = isForbidden ? null : `${ prefixCls }__twrapper`;
 
