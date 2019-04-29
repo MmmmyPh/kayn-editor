@@ -2,17 +2,35 @@ import { IMAGE } from '../../constant/blocks';
 import getImageDataUrl from '../../utils/getImageDataUrl';
 import getImageWH from '../../utils/getImageWH';
 
+const MAX_WIDTH = 600;
+
 export const insertImageByChooser = ( editor, file ) => {
+	const { base64Url, size, width, height } = file;
+	const trueWidth = width,
+		trueHeight = height,
+		ratio = trueWidth / trueHeight,
+		inverseRatio = trueHeight / trueWidth;
+
+	let useWidth = width,
+		useHeight = height;
+
+	if ( trueWidth > MAX_WIDTH ) {
+		useWidth = MAX_WIDTH;
+		useHeight = MAX_WIDTH * inverseRatio;
+	}
+	
 	const split = editor.splitBlock();
 	editor
 		.moveToEndOfNode( split.value.previousBlock )
 		.insertBlock( {
 			type: IMAGE,
 			data: {
-				src: file.base64Url,
-				size: file.size,
-				width: file.width,
-				height: file.height
+				src: base64Url,
+				size: size,
+				width: useWidth,
+				height: useHeight,
+				trueWidth,
+				trueHeight,
 			}
 		} )
 		.focus();

@@ -4,10 +4,10 @@ const prefixCls = 'kayn';
 
 const ImageNode = ( { options, attributes, children, node, isSelected, editor, ...rest } ) => {
 	const { getSrc, getWidth, getHeight } = options;
-	// console.log( '==========' );
-	// console.log( isSelected );
-	// console.log( rest );
-	// console.log( '==========' );
+	console.log( '==========' );
+	console.log( isSelected );
+	console.log( rest );
+	console.log( '==========' );
 	return (
 		<div 
 			{ ...attributes }

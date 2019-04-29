@@ -30,18 +30,23 @@ const blockRules = [ {
 		const type = BLOCK_TAGS[ el.tagName.toLowerCase() ];
 		if ( type ) {
 			const indent = el && el.getAttribute && el.getAttribute( dataPaddingLeft ) ? parseInt( el.getAttribute( dataPaddingLeft ) ) / 3 : 0;
+			let data = {
+				className: el.getAttribute( 'class' ),
+				align: el.getAttribute( dataTextAlign ),
+				indent: indent,
+				lineHeight: el.getAttribute( dataLineHeight ),
+			};
+			if ( type === IMAGE ) {
+				data = Object.assign( data, {
+					width: parseFloat( el.getAttribute( dataWidth ) ),
+					height: parseFloat( el.getAttribute( dataHeight ) ),
+					src: el.getAttribute( 'src' ),
+				} );
+			}
 			return {
 				object: 'block',
 				type: type,
-				data: {
-					className: el.getAttribute( 'class' ),
-					align: el.getAttribute( dataTextAlign ),
-					indent: indent,
-					lineHeight: el.getAttribute( dataLineHeight ),
-					width: el.getAttribute( dataWidth ),
-					height: el.getAttribute( dataHeight ),
-					src: el.getAttribute( 'src' ),
-				},
+				data: data,
 				nodes: next( el.childNodes ),
 			};
 		}
@@ -94,7 +99,7 @@ const blockRules = [ {
 					return <li className = { obj.data.get( 'className' ) } style = { blockStyleAttrs } { ...blockAttrs }>{children}</li>;
 				case IMAGE:
 					return <div className = { obj.data.get( 'className' ) } style = { blockStyleAttrs } { ...blockAttrs }>
-						<img src = { obj.data.get( 'src' ) } width = { obj.data.get( 'width' ) } height = { obj.data.get( 'height' ) } />
+						<img src = { obj.data.get( 'src' ) } width = { obj.data.get( 'width' ) } height = { obj.data.get( 'height' ) } { ...blockAttrs } />
 					</div>;
 				// case 'code':
 				// 	return (
