@@ -14,6 +14,9 @@ const inlineRules = [ {
 				type: type,
 				data: {
 					className: el.getAttribute( 'class' ),
+					src: el.getAttribute( 'src' ),
+					width: el.getAttribute( 'width' ),
+					height: el.getAttribute( 'height' ),
 				},
 				nodes: next( el.childNodes ),
 			};
@@ -27,7 +30,8 @@ const inlineRules = [ {
 				case IMAGE:
 					return <img
 						src = { obj.data.get( 'src' ) }
-						width = { obj.data.get( 'width' ) } height = { obj.data.get( 'height' ) }
+						width = { obj.data.get( 'width' ) } 
+						height = { obj.data.get( 'height' ) }
 						style = { { display: 'inline-block' } }
 					/>;
 				default:

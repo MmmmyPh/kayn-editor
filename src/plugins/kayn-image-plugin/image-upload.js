@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Upload, Icon, Modal, message } from 'antd';
-import getImageBase64 from '../../utils/getImageBase64';
+import getImageDataUrl from '../../utils/getImageDataUrl';
 import getImageWH from '../../utils/getImageWH';
 
 const Dragger = Upload.Dragger;
@@ -29,14 +29,9 @@ const ImageUpload = ( { fileList, onChange } ) => {
 		const fileStatus = file.status;
 		if ( fileStatus === 'uploading ' ) {
 			// console.log( 'uploading' );
-			// console.log( file );
-			// console.log( 'uploading' );
 		} else {
-			// console.log( 'error' );
-			// console.log( file );
-			// console.log( 'error' );
 			let base64Url;
-			getImageBase64( file.originFileObj )
+			getImageDataUrl( file.originFileObj )
 				.then( imageUrl => {
 					base64Url = imageUrl;
 					return getImageWH( imageUrl );

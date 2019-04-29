@@ -50,6 +50,7 @@ const App = () => {
 			<Button style = { { margin: '0 10px' } } onClick = { onSaveString }>保存为字符串</Button>
 			<Button style = { { margin: '0 10px' } } onClick = { onSaveHtml }>保存为HTML</Button>
 			<Button style = { { margin: '0 10px' } } onClick = { onToggleReadOnly }>只读</Button>
+			<Button style = { { margin: '0 10px' } } onClick = { () => handleOnChange( htmlDeserialize( '<p>Kayn Editor Demo.</p>' ) ) }>重置内容</Button>
 		</div>
 	</div>;
 };

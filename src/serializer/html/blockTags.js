@@ -32,7 +32,7 @@ const BLOCK_TAGS = {
 	ol: OL_LIST,
 	ul: UL_LIST,
 	li: LIST_ITEM,
-	image: IMAGE
+	img: IMAGE
 	// pre: 'code',
 };
 

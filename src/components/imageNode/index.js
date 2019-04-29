@@ -9,16 +9,16 @@ const ImageNode = ( { options, attributes, children, node, isSelected, editor, .
 	// console.log( rest );
 	// console.log( '==========' );
 	return (
-		<span 
+		<div 
 			{ ...attributes }
 			// onClick = { () => {console.log( 1 );} }
 			className = { `${ prefixCls }__img-wrapper` }
 			style = { { width: getWidth( node ), height: getHeight( node ) } }
 		>
 
-			<img src = { getSrc( node ) } />
+			<img className = { `${ prefixCls }__img` } src = { getSrc( node ) } style = { { width: getWidth( node ), height: getHeight( node ) } } />
 			{children}
-		</span>
+		</div>
 	);
 };
 

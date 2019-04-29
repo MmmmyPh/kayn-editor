@@ -4,9 +4,11 @@ import Button from '../../components/button';
 import Icon from '../../components/icon';
 import TITLE from '../../constant/button-title';
 import ImageNode from '../../components/imageNode';
-import { IMAGE } from '../../constant/inlines';
-import { haveInlines } from '../../utils/have';
+import { IMAGE } from '../../constant/blocks';
+import { haveBlocks } from '../../utils/have';
 import ImageUpload from './image-upload';
+import dropOrPasteImage from './drop-or-paste-image';
+import { insertImageByChooser, insertImageByDrop } from './insert-single-image';
 
 const KaynImagePlugin = ( opt ) => {
 	const options = {
@@ -23,9 +25,14 @@ const KaynImagePlugin = ( opt ) => {
 			} else {
 				return next();
 			}
-		}
+		},
+		...dropOrPasteImage( {
+			insertImage: insertImageByDrop
+		} )
 	};
 };
+
+export default KaynImagePlugin;
 
 const headerStyle = {
 	display: 'flex',
@@ -45,7 +52,7 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 	const [ visible, setVisible ] = useState( false );
 	const [ fileList, setFileList ] = useState( [] );
 
-	const haveImages = editor ? haveInlines( editor, IMAGE ) : false;
+	const haveImages = editor ? haveBlocks( editor, IMAGE ) : false;
 
 	const handleCancel = () => {
 		setVisible( false );
@@ -66,36 +73,11 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 		if ( e ) {
 			e.preventDefault();
 		}
-		// const haveLinks = haveImages( editor, IMAGE );
-		// const isExpanded = editor.value.selection.isExpanded;
-
-		// if ( haveLinks ) {
-		// 	inlineLinks( editor, IMAGE );
-		// } else if ( isExpanded ) {
-		// 	setNeedText( false );
-		// 	setVisible( true );
-		// } else {
-		// setNeedText( true );
 		setVisible( true );
-		// }
 	};
 
 	const handleConfirm = () => {
-		fileList.forEach( file => {
-			editor
-				.insertText( '\u200B' )
-				.insertInline( {
-					type: IMAGE,
-					data: {
-						src: file.base64Url,
-						size: file.size,
-						width: file.width,
-						height: file.height
-					}
-				} )
-				.insertText( '\u200B' )
-				.focus();
-		} );
+		fileList.forEach( file => insertImageByChooser( editor, file ) );
 		handleCancel();
 	};
 
@@ -123,5 +105,3 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 		</Popover>
 	);
 };
-
-export default KaynImagePlugin;

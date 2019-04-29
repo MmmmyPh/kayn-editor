@@ -39,7 +39,8 @@ const blockRules = [ {
 					indent: indent,
 					lineHeight: el.getAttribute( dataLineHeight ),
 					width: el.getAttribute( dataWidth ),
-					height: el.getAttribute( dataHeight )
+					height: el.getAttribute( dataHeight ),
+					src: el.getAttribute( 'src' ),
 				},
 				nodes: next( el.childNodes ),
 			};
@@ -92,7 +93,9 @@ const blockRules = [ {
 				case LIST_ITEM:
 					return <li className = { obj.data.get( 'className' ) } style = { blockStyleAttrs } { ...blockAttrs }>{children}</li>;
 				case IMAGE:
-					return <div className = { obj.data.get( 'className' ) } style = { blockStyleAttrs } { ...blockAttrs }>{children}</div>;
+					return <div className = { obj.data.get( 'className' ) } style = { blockStyleAttrs } { ...blockAttrs }>
+						<img src = { obj.data.get( 'src' ) } width = { obj.data.get( 'width' ) } height = { obj.data.get( 'height' ) } />
+					</div>;
 				// case 'code':
 				// 	return (
 				// 		<pre>
