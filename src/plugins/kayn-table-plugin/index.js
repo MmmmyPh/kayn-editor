@@ -43,9 +43,7 @@ const KaynTablePlugin = ( opt ) => {
 
 export const KaynTableButton = ( { editor, onChange, ...rest } ) => {
 	const handleTablePickerChange = ( { rowNumber, columnNumber } ) => {
-		const split = editor.splitBlock();
 		editor
-			.moveToEndOfNode( split.value.previousBlock )
 			.insertTable( columnNumber + 1, rowNumber + 1 )
 			.moveTableSelection( 0, 0 )
 			.focus();

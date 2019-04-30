@@ -86,6 +86,7 @@ export const KaynLinkButton = ( { editor, onChange, ...rest } ) => {
 	return (
 		<Popover
 			visible = { visible }
+			overlayStyle = { { zIndex: 10002 } }
 			content = { <LinkForm 
 				visible = { visible }
 				url = { url } 

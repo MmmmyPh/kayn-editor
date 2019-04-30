@@ -19,21 +19,17 @@ export const insertImageByChooser = ( editor, file ) => {
 		useHeight = MAX_WIDTH * inverseRatio;
 	}
 	
-	const split = editor.splitBlock();
-	editor
-		.moveToEndOfNode( split.value.previousBlock )
-		.insertBlock( {
-			type: IMAGE,
-			data: {
-				src: base64Url,
-				size: size,
-				width: useWidth,
-				height: useHeight,
-				trueWidth,
-				trueHeight,
-			}
-		} )
-		.focus();
+	editor.insertBlock( {
+		type: IMAGE,
+		data: {
+			src: base64Url,
+			size: size,
+			width: useWidth,
+			height: useHeight,
+			trueWidth,
+			trueHeight,
+		}
+	} );
 };
 
 export const insertImageByDrop = ( editor, file ) => {

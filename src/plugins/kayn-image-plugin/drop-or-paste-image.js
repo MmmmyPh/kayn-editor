@@ -1,6 +1,8 @@
-import { getEventTransfer,getEventRange } from 'slate-react';
+import { message } from 'antd';
+import { getEventTransfer, getEventRange } from 'slate-react';
 import isUrl from 'is-url';
 import isImage from 'is-image';
+import isOverSize, { AVAILABLE_SIZE } from './is-oversize';
 
 const imageAccepts = [ 'png', 'jpg', 'jpeg', 'gif', 'svg', 'webp' ];
 
@@ -41,6 +43,11 @@ const dropOrPasteImage = ( { extensions = imageAccepts, insertImage = ( editor, 
 				continue;
 			}
 
+			if ( isOverSize( file ) ) {
+				message.error( `上传图片大小不能超过${ AVAILABLE_SIZE }M！, 文件: "${ file.name }"过大!` );
+				continue;
+			}
+
 			if( range ) {
 				editor.select( range );
 			}
@@ -57,6 +64,10 @@ const dropOrPasteImage = ( { extensions = imageAccepts, insertImage = ( editor, 
 		if ( !isImage( text ) ) {
 			return next();
 		}
+
+		console.log( '==========' );
+		console.log( transfer );
+		console.log( '==========' );
 
 		if ( range ) {
 			editor.select( range );

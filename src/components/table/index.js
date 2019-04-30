@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
-import { Tooltip } from 'antd';
-import Icon, {
+import {
 	TableInsertRow,
 	TableInsertColumn,
 	TableDeleteRow, 
 	TableDeleteColumn,
 } from 'components/icon';
+import ToolButton from 'components/toolButton';
 
 const prefixCls = 'kayn';
 
@@ -60,12 +60,12 @@ const KaynTable = ( { tableOptions, editor, attributes, children, node, isSelect
 		<div className = { wrapperCls }>
 			{
 				!isForbidden && <span className = { `${ prefixCls }__ttoolbar` }>
-					<Tooltip title = '插入行'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleInertRow }><TableInsertRow /></span></Tooltip >
-					<Tooltip title = '插入列'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleInertColumn }><TableInsertColumn /></span></Tooltip >
-					<Tooltip title = '删除行'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleDeleteRow }><TableDeleteRow /></span></Tooltip >
-					<Tooltip title = '删除列'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleDeleteColumn }><TableDeleteColumn /></span></Tooltip >
-					<Tooltip title = '切换表头'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleToggleTh }><Icon icon = 'TH' style = { { width: 18, height: 18 } } /></span></Tooltip >
-					<Tooltip title = '删除表格'><span className = { `${ prefixCls }__ttool` } onMouseDown = { e => e.preventDefault() } onClick = { handleRemoveTable }><Icon icon = 'DELETE' style = { { width: 18, height: 18 } } /></span></Tooltip >
+					<ToolButton className = { `${ prefixCls }__ttool` } title = '插入行' icon = { <TableInsertRow /> } onClick = { handleInertRow } />
+					<ToolButton className = { `${ prefixCls }__ttool` } title = '插入列' icon = { <TableInsertColumn /> } onClick = { handleInertColumn } />
+					<ToolButton className = { `${ prefixCls }__ttool` } title = '删除行' icon = { <TableDeleteRow /> } onClick = { handleDeleteRow } />
+					<ToolButton className = { `${ prefixCls }__ttool` } title = '删除列' icon = { <TableDeleteColumn /> } onClick = { handleDeleteColumn } />
+					<ToolButton className = { `${ prefixCls }__ttool` } title = '切换表头' icon = 'TH' onClick = { handleToggleTh } />
+					<ToolButton className = { `${ prefixCls }__ttool` } title = '删除表格' icon = 'DELETE' onClick = { handleRemoveTable } />
 				</span>
 			}
 			<KaynTableSelf attributes = { attributes } node = { node }>{children}</KaynTableSelf>

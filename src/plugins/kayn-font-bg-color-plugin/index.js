@@ -58,6 +58,7 @@ export const KaynFontBgColorButton = ( { editor, onChange, ...rest } ) => {
 		<Popover
 			className = 'test'
 			visible = { visible }
+			overlayStyle = { { zIndex: 10002 } }
 			content = { <ChromePicker
 				color = { bgColor }
 				onChangeComplete = { handleColorChange }

@@ -82,6 +82,7 @@ export const KaynHeaderButton = ( { editor, onChange, ...rest } ) => {
 				editor = { editor }
 				onClick = { handleVisibleChange }
 			/> }
+			overlayStyle = { { zIndex: 10002 } }
 			visible = { visible }
 			trigger = 'click'
 			onVisibleChange = { handleVisibleChange }

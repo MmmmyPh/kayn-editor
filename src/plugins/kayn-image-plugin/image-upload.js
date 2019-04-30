@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Upload, Icon, Modal, message } from 'antd';
 import getImageDataUrl from '../../utils/getImageDataUrl';
 import getImageWH from '../../utils/getImageWH';
+import isOverSize, { AVAILABLE_SIZE } from './is-oversize';
 
 const Dragger = Upload.Dragger;
 
 const draggerStyle = {
 	width: 300
 };
-const AVAIL_SIZE = 2;
 
 const ImageUpload = ( { fileList, onChange } ) => {
 	const [ previewVisible, setPreviewVisible ] = useState( false );
@@ -16,10 +16,8 @@ const ImageUpload = ( { fileList, onChange } ) => {
 
 	const handleBeforeUpload = ( file ) => {
 		// 限制上传图片大小
-		const fileSize = file.size / 1024 / 1024;
-		const isOverSize = fileSize > AVAIL_SIZE;
-		if ( isOverSize ) {
-			message.error( `上传图片大小不能超过${ AVAIL_SIZE }M！` );
+		if ( isOverSize( file ) ) {
+			message.error( `上传图片大小不能超过${ AVAILABLE_SIZE }M！` );
 			return false;
 		}
 		return true;

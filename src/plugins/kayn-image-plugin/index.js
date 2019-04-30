@@ -16,6 +16,8 @@ const KaynImagePlugin = ( opt ) => {
 		getSrc: node => node.data.get( 'src' ),
 		getWidth: node => node.data.get( 'width' ),
 		getHeight: node => node.data.get( 'height' ),
+		getTrueWidth: node => node.data.get( 'trueWidth' ),
+		getTrueHeight: node => node.data.get( 'trueHeight' ),
 		...opt
 	};
 	return {
@@ -84,6 +86,7 @@ export const KaynImageButton = ( { editor, onChange, ...rest } ) => {
 	return (
 		<Popover
 			visible = { visible }
+			overlayStyle = { { zIndex: 10002 } }
 			content = { <ImageUpload
 				fileList = { fileList }
 				onChange = { handleChange }

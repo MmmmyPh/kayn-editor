@@ -125,15 +125,34 @@
 	&__img-wrapper
 		poRel()
 		margin: 5px 0
-		// &:before
-		// 	content: ''
-		// 	poAbs()
-		// 	top: -4px
-		// 	right: -4px
-		// 	bottom: -4px
-		// 	left: -4px
-		// 	border(2px solid #ef6942)
-		// 	z-index: 0
+		&--selected
+			&:before
+				content: ''
+				poAbs()
+				top: -4px
+				right: -4px
+				bottom: -4px
+				left: -4px
+				border(2px solid #ef6942)
+				z-index: 0
+	&__img
+		cursor: pointer
+	&__img-toolbar
+		poAbs()
+		top: -5px
+		right: -25px
+		width: 18px
+	&__img-editor-row
+		margin-bottom: 10px
+		& input
+			width: 100px
+	&__img-origin-modal
+		& .ant-modal-body
+			padding: 5px
+			overflow: hidden
+	&__img-origin-content
+		width: 100%
+		overflow: auto
 
 .react-resizable 
 	position: relative

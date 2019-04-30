@@ -22,6 +22,7 @@ const LinkNode = ( { options, attributes, children, node, editor } ) => {
 		className = { prefixCls }
 		trigger = 'click'
 		placement = 'bottom'
+		overlayStyle = { { zIndex: 10002 } }
 		onVisibleChange = { handleOnVisibleChange }
 		content = { <PopContent
 			href = { href }

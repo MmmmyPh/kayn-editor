@@ -64,6 +64,7 @@ export const KaynCodeBlockButton = ( { editor, onChange, ...rest } ) => {
 	return (
 		<Popover
 			visible = { visible }
+			overlayStyle = { { zIndex: 10002 } }
 			content = { <CodeTypeSelect value = { codeType } onSelect = { handleCodeTypeSelect } /> }
 			title = '添加代码快'
 			trigger = 'click'

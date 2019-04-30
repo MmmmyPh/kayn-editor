@@ -23,10 +23,13 @@ const ICONS = {
 	INDENT:[ 'fas', 'faIndent' ],
 	OUTDENT:[ 'fas', 'faOutdent' ],
 	TABLE:[ 'fas', 'faTable' ],
-	DELETE:[ 'fas', 'faTrash' ],
 	TH:[ 'fas', 'faThList' ],
 	IMAGE: [ 'fas', 'faFileImage' ],
 	// LETTERSPACING: 'LETTERSPACING'
+	// 操作符
+	DELETE:[ 'fas', 'faTrash' ],
+	EYE: [ 'fas', 'faEye' ],
+	EDIT: [ 'fas', 'faEdit' ],
 };
 
 export default ICONS;

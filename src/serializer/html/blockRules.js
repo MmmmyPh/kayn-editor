@@ -23,6 +23,8 @@ const dataPaddingLeft = 'data-paddingleft';
 const dataLineHeight = 'data-lineheight';
 const dataWidth = 'data-width';
 const dataHeight = 'data-height';
+const dataTrueWidth = 'data-truewidth';
+const dataTrueHeight = 'data-trueheight';
 
 const blockRules = [ {
 	// Switch deserialize to handle more blocks...
@@ -38,9 +40,11 @@ const blockRules = [ {
 			};
 			if ( type === IMAGE ) {
 				data = Object.assign( data, {
+					src: el.getAttribute( 'src' ),
 					width: parseFloat( el.getAttribute( dataWidth ) ),
 					height: parseFloat( el.getAttribute( dataHeight ) ),
-					src: el.getAttribute( 'src' ),
+					trueWidth: parseFloat( el.getAttribute( dataTrueWidth ) ),
+					trueHeight: parseFloat( el.getAttribute( dataTrueHeight ) ),
 				} );
 			}
 			return {
@@ -59,7 +63,9 @@ const blockRules = [ {
 				[ dataPaddingLeft ]: obj.data.get( 'indent' ) ? `${ 3 * obj.data.get( 'indent' ) }em` : undefined,
 				[ dataLineHeight ]: obj.data.get( 'lineHeight' ),
 				[ dataWidth ]: obj.data.get( 'width' ),
-				[ dataHeight ]: obj.data.get( 'height' )
+				[ dataHeight ]: obj.data.get( 'height' ),
+				[ dataTrueWidth ]: obj.data.get( 'trueWidth' ),
+				[ dataTrueHeight ]: obj.data.get( 'trueHeight' )
 			};
 			const blockStyleAttrs = {
 				textAlign: obj.data.get( 'align' ),

@@ -2,6 +2,7 @@ import React, { useContext, forwardRef } from 'react';
 import classnames from 'classnames';
 import { Editor } from 'slate-react';
 import { KaynValueContext } from './kayn-context';
+import kaynSchema from './kayn-schema';
 
 const KaynContent = forwardRef( ( { prefixCls, plugins, isReadOnly }, ref ) => {
 	const { editorValue, handleChange } = useContext( KaynValueContext );
@@ -11,6 +12,7 @@ const KaynContent = forwardRef( ( { prefixCls, plugins, isReadOnly }, ref ) => {
 		>
 			<Editor
 				ref = { ref }
+				schema = { kaynSchema }
 				className = { classnames( `${ prefixCls }__core` ) }
 				plugins = { plugins }
 				readOnly = { isReadOnly }
