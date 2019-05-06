@@ -1,0 +1,15 @@
+{
+  "name": "@phyz/slate-util-get",
+  "version": "0.1.0",
+  "description": "A slate utility function to get values.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "@phyz",
+    "slate-util"
+  ],
+  "author": "Phyz",
+  "license": "MIT"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@phyz/type-check",
+  "version": "0.1.0",
+  "description": "Type check util for JavaScript Data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "@phyz",
+    "type-check"
+  ],
+  "author": "Phyz",
+  "license": "MIT"
+}
