@@ -64,10 +64,12 @@ const pluginsMap = Map( {
 
 const KaynEditor = forwardRef( ( { 
 	prefixCls = 'kayn', 
+	mode = 'normal',
+	noToolbar = false,
 	readOnly = false,
 	wrapperClassName = '',
+	contentStyle = {},
 	excludePlugins = [],
-	mode = 'normal',
 	value = '',
 	onChange = () => {}
 }, ref ) => {
@@ -103,18 +105,20 @@ const KaynEditor = forwardRef( ( {
 	return <KaynWrapper prefixCls = { prefixCls } className = { wrapperClsStr }>
 		<KaynValueContext.Provider value = { { editorValue, handleChange } }>
 			{
-				!isReadOnly && <KaynToolbar
+				!noToolbar && 
+				!isReadOnly && 
+				<KaynToolbar
 					prefixCls = { prefixCls }
 					isFull = { isFullscreen }
 					goFull = { handleGoFull }
 					runningPlugins = { runningPlugins }
 					editor = { editorRef.current }
-				>
-				</KaynToolbar>
+				/>
 			}
 			<KaynContent 
 				isReadOnly = { isReadOnly }
 				prefixCls = { prefixCls }
+				contentStyle = { contentStyle }
 				plugins = { plugins }
 				ref = { editorRef }
 			/>

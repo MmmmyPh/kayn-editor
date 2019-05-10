@@ -42,6 +42,8 @@ const App = () => {
 
 	return <div>
 		<KaynEditor
+			// noToolbar
+			// contentStyle = { { height:100 } }
 			readOnly = { readOnly }
 			value = { value }
 			onChange = { handleOnChange }

@@ -4,11 +4,12 @@ import { Editor } from 'slate-react';
 import { KaynValueContext } from './kayn-context';
 import kaynSchema from './kayn-schema';
 
-const KaynContent = forwardRef( ( { prefixCls, plugins, isReadOnly }, ref ) => {
+const KaynContent = forwardRef( ( { prefixCls, plugins, isReadOnly, contentStyle }, ref ) => {
 	const { editorValue, handleChange } = useContext( KaynValueContext );
 	return (
 		<div
 			className = { classnames( `${ prefixCls }__content` ) }
+			style = { contentStyle }
 		>
 			<Editor
 				ref = { ref }
