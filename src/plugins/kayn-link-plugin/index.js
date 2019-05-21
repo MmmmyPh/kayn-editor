@@ -97,6 +97,7 @@ export const KaynLinkButton = ( { editor, onChange, ...rest } ) => {
 			/> }
 			title = '添加链接'
 			trigger = 'click'
+			placement = 'bottom'
 			onVisibleChange = { handleVisibleChange }
 		>
 			<Button

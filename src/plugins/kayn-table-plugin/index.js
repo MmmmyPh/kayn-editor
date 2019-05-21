@@ -43,15 +43,19 @@ const KaynTablePlugin = ( opt ) => {
 
 export const KaynTableButton = ( { editor, onChange, ...rest } ) => {
 	const handleTablePickerChange = ( { rowNumber, columnNumber } ) => {
-		editor
+		let e = editor
 			.insertTable( columnNumber + 1, rowNumber + 1 )
 			.moveTableSelection( 0, 0 )
 			.focus();
+		onChange( e.value );
 	};
 
 	return (
 		<TablePicker
 			onChange = { handleTablePickerChange }
+			getPopupContainer = { ( btn ) => btn }
+			placement = 'bottomLeft'
+			style = { { zIndex: 10002 } }
 		>
 			<Button
 				type = { TABLE }

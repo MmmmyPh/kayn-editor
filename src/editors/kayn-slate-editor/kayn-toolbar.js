@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 import Divider from 'components/divider';
 import { Map } from 'immutable';
@@ -52,6 +52,7 @@ const pluginBtnMap = Map( {
 const NullTag = () => null;
 
 const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, isFull, goFull, ...restProps } ) => {
+	const { handleChange } = useContext( KaynValueContext );
 	const unRedo = [
 		<KaynUndoButton key = 'undo' editor = { editor } />,
 		<KaynRedoButton key = 'redo' editor = { editor } />,
@@ -66,6 +67,7 @@ const KaynToolbar = ( { prefixCls, children, runningPlugins, editor, isFull, goF
 			return <Tag
 				key = { `${ key }-${ index }` }
 				editor = { editor }
+				onChange = { handleChange }
 			/>;
 		} ) )
 		.concat( [
