@@ -24,6 +24,7 @@ import { KaynFontBgColorButton } from 'plugins/kayn-font-bg-color-plugin';
 import { KaynTableButton } from 'plugins/kayn-table-plugin';
 import { KaynImageButton } from 'plugins/kayn-image-plugin';
 import Fullscreen from 'components/fullscreen';
+import { KaynValueContext } from './kayn-context';
 
 const pluginBtnMap = Map( {
 	divider: Divider,
