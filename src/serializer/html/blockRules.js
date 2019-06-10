@@ -15,6 +15,7 @@ import {
 	OL_LIST,
 	UL_LIST,
 	LIST_ITEM,
+	LIST_ITEM_CHILD,
 	IMAGE
 } from 'constant/blocks';
 
