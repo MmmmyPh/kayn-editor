@@ -29,7 +29,7 @@ module.exports = {
 	OL_LIST: 'ordered_list',
 	UL_LIST: 'unordered_list',
 	LIST_ITEM: 'list_item',
-	LIST_ITEM_CHILD,: 'list-item-child',
+	LIST_ITEM_CHILD: 'list-item-child',
 
 	// Default block
 	DEFAULT: 'paragraph',
